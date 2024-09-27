@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Bank</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body class="page-body">
+    <!-- Navbar -->
+    <header>
+      <div id="navbar"></div>
+    </header>
+
+    <section style="background-color: #f8f9fa">
+      <div class="container">
+        <div class="btn-container">
+          <button class="btn btn-custom">Notification For Blood</button>
+          <button class="btn btn-custom">All Blood Requests</button>
+          <button class="btn btn-custom">Events</button>
+
+          <button class="btn btn-custom">Event Filter</button>
+          <button class="btn btn-custom">Accept Donation</button>
+          <button class="btn btn-custom">Dashboard</button>
+          <button class="btn btn-custom">Donation History</button>
+          <button class="btn btn-custom">Feedback</button>
+        </div>
+      </div>
+      <!-- Donation Section -->
+      <div class="donation-section">
+        <div class="">
+          <div class="col-md-12 mb-3 p-3">
+            <!-- Notification Section -->
+            <div class="notification-box">
+              <h2>Notification</h2>
+              <p>There are currently no new notifications.</p>
+              <!-- You can replace this content with dynamic notifications -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Font Awesome CDN for Icons -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./donate_blood.js"></script>
+    <script src="./navbar.js"></script>
+    <script src="./footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

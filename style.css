@@ -1,10 +1,34 @@
 
-    /* Navbar design*/
+    
 /* Custom Navbar Styling */
 .navbar {
     background-color: #B22222; /* Deep Blood Red Color */
-    padding: 25px;
+    padding: 25px !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a professional look */
+}
+/* Default logo size for larger screens (desktop, laptop) */
+.logo-img {
+    width: 80px;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* For tablet devices */
+@media (max-width: 991px) {
+    .logo-img {
+        width: 60px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 575px) {
+    .d-flex {
+        flex-direction: column; /* Stack vertically on mobile */
+        align-items: center; /* Center align */
+    }
+    
+    .logo-img {
+        width: 45px;
+    }
 }
 
 .navbar-brand {
@@ -26,7 +50,7 @@
 }
 
 .navbar-nav .nav-link:hover {
-    color: #FF6347;
+    color: #FF6347 !important;
     transform: translateY(-3px);
 }
 
@@ -45,135 +69,1188 @@
     width: 100%;
 }
 
-/* Donate Button Styling */
 .btn-donate {
-    background-color: rgb(255, 255, 255); /* White background */
-    color: #B22222;
-    border-radius: 50px;
-    padding: 10px 25px;
-    font-weight: bold;
-    font-size: 1rem;
-    border: 2px solid #B22222;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: rgb(255, 255, 255) !important; /* White background */
+    color: #B22222 !important;
+    border-radius: 50px !important;
+    padding: 10px 25px !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    border: 2px solid #B22222 !important;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
 }
 
 .btn-donate:hover {
-    background-color: #FF6347;
-    color: white;
-    border-color: #FF6347;
+    background-color: #FF6347 !important;
+    color: white !important;
+    border-color: #FF6347 !important;
 }
 
-/* Footer design */
+
+
+/* Custom footer design */
+/* ----------------------------------------------------------------- */
 .custom-footer {
-        background-color: #B22222; /* Blood red theme */
-        color: white;
-        padding: 50px 0;
-        position: relative;
+    background-color:darkred; /* Blood red theme */
+    color: white;
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-footer h5 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Line under headings */
+.custom-footer h5::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: #FF6347; /* Tomato color */
+    bottom: 0;
+    left: 0;
+}
+
+/* About Text Styling */
+.footer-about {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 300px;
+    color: white;
+}
+
+/* Quick Links */
+.footer-links a {
+    color: white;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #FF6347;
+    text-decoration: underline;
+}
+
+/* Contact Info Styling */
+.footer-contact a {
+    color: #FF6347;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+.social-icon {
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Circle size */
+    width: 50px;  /* Circle size */
+    border-radius: 50%;  /* Makes it circular */
+    padding: 10px;
+    margin-right: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    background-color: white; /* White background */
+}
+
+.social-icon i {
+    font-size: 1.8rem;
+}
+
+/* Facebook Icon */
+.social-icon .fa-facebook {
+    color: #3b5998; /* Facebook's original blue */
+}
+
+/* Instagram Icon */
+.social-icon .fa-instagram {
+    color: #E1306C; /* Instagram's original gradient color */
+}
+
+/* YouTube Icon */
+.social-icon .fa-youtube {
+    color: #FF0000; /* YouTube's original red */
+}
+
+/* Hover effect */
+.social-icon:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.social-icon:hover {
+    color: #FF6347;
+    transform: scale(1.1);
+}
+
+
+/* Copyright */
+.footer-copyright {
+    margin-top: 10px;
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: #B22222;
+    padding: 3px 3px;
+    background-color: #fff;
+    background: linear-gradient(#FF6347,);
+    margin-bottom: -15px;
+}
+
+/* Subtle Animation for Footer Appearance */
+.custom-footer {
+    animation: fadeInFooter 1.2s ease-in-out;
+}
+.custom-btn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #FF6347; /* Tomato color */
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #B22222; /* Darker red on hover */
+}
+
+@keyframes fadeInFooter {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Footer */
+@media (min-width: 320px) ,(max-width: 766px) {
+    .footer-about, .footer-links, .footer-contact ,.footer-icons {
+        /* text-align: center; */
     }
 
-    .custom-footer h5 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        position: relative;
-        padding-bottom: 10px;
-        display: inline-block;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-
-    .custom-footer h5::after {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 3px;
-        background-color: #FF6347; /* Tomato color */
-        bottom: 0;
-        left: 0;
-    }
-
-    /* About Text Styling */
-    .footer-about {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        max-width: 300px;
-    }
-
-    /* Quick Links */
-    .footer-links a {
-        color: white;
-        display: inline-block;
-        margin-bottom: 10px;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-        color: #FF6347;
-        text-decoration: underline;
-    }
-
-    /* Contact Info Styling */
-    .footer-contact a {
-        color: #FF6347;
-        text-decoration: none;
-    }
-
-    .footer-contact a:hover {
-        text-decoration: underline;
-    }
-
-    /* Social Icons */
     .social-icons {
-        margin-top: 20px;
+        /* text-align: center; */
+    }
+}
+
+/* @media(max-width: 768px) {
+    .footer-about, .footer-links, .footer-contact ,.footer-icons {
+        text-align: center;
     }
 
-    .social-icon {
-        font-size: 1.8rem;
-        color: white;
-        margin-right: 20px;
-        transition: transform 0.3s ease, color 0.3s ease;
+    .social-icons {
+        text-align: start;
+        align-items: center;
+        justify-items: center;
     }
+} */
 
-    .social-icon:hover {
-        color: #FF6347; /* Hover color */
-        transform: scale(1.2); /* Hover scale effect */
+/* index page css */
+/* -------------------------------------------------------------------------- */
+.banner-sections {
+    position: relative;
+    background-image: url(./images/organ-donation-4301527_1920.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; /* Image covers the entire area */
+    background-position: center; /* Centers the image */
+    height: 100vh; /* Full height */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Hide overflow */
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.111); /* Black with 50% opacity */
+    z-index: 1;
+}
+.donate-btn {
+    background: linear-gradient(90deg,#ff0000, #ff4d4d);
+
+    border-radius: 3px;
+    border: none;
+    color: white;
+    padding: 25px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    /* border-radius: 50px; */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+    position: relative;
+    left: 159px;
+    bottom: 250px; /* ব্যানারের শেষ থেকে সামান্য উপরে */
+}
+
+.donate-btn:hover {
+    background: linear-gradient(90deg, #ff0000d9, #ff0000d7);
+
+}
+.banner-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-left: 20px; /* বাটনকে বাম পাশে সরাতে */
+}
+/* Responsive adjustments for all mobile sizes */
+@media (max-width: 768px) {
+    .banner-sections {
+        height: 70vh; /* Reduced height for medium devices */
     }
+}
 
-    /* Copyright */
-    .footer-copyright {
-        margin-top: 40px;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.8);
+@media (min-width: 320px) and (max-width: 576px) {
+    .banner-sections {
+        margin-top: -52px !important;
+        padding: 0;
+        background-size: contain !important; 
+        height: 50vh; /* Further reduced height for small devices */
     }
-
-    /* Subtle Animation for Footer Appearance */
-    .custom-footer {
-        animation: fadeInFooter 1.2s ease-in-out;
+    .donate-btn{
+        left: 3px;
+        bottom:80px;
+        padding: 10px 15px;
+        font-size: 12px;
+        border-radius: 2px;
     }
+}
 
-    @keyframes fadeInFooter {
-        0% {
-            opacity: 0;
-            transform: translateY(50px);
+/* Additional adjustments for larger mobile screens */
+@media (min-width: 577px) and (max-width: 768px) {
+    .banner-sections {
+        height: 60vh; /* Height for medium devices */
+    }
+    .donate-btn{
+        left: 29px;
+        bottom: 100px;
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+
+
+
+.news-card {
+    /* padding-top: 20px !important; */
+    background-color: whitesmoke !important;
+    transition: transform 0.3s ease, box-shadow 0.1s ease; /* Animation for scaling and shadow */
+}
+
+.news-card:hover {
+    transform: translateY(-10px); /* Move card up on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.card {
+    /* width: 300px; */
+   /* Fixed height for the card */
+}
+
+.card-body {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    height: 100%; /* Full height for the body */
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        height: auto; /* Auto height on smaller screens */
+    }
+   
+}
+
+.event-card {
+    margin-bottom: 30px; /* Space between cards */
+}
+.event-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.event-date {
+    font-size: 1.1rem;
+    color: #888;
+}
+.event-description {
+    font-size: 1rem;
+}
+
+/* blood donatin process section */
+/* --------------------------------------- */
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 36.25%; 
+   /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* Limit video height on large screens */
+@media (min-width: 992px) {
+    .video-wrapper {
+        max-height: 400px !; /* Adjust this value as needed */
+    }
+}
+/* Donation History css */
+/* --------------------------------------- */
+
+.cards {
+    margin: 25px 0; /* Space between cards */
+}
+
+/* testimonial section */
+/* --------------------------------------------------- */
+.testimonials-section {
+    background: linear-gradient(90deg,  #b222229b,#b222229b, #b222229b );
+  }
+  
+  .testimonial {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quote-icon {
+    color: #6c757d;
+  }
+  
+  .testimonial p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .testimonial-image img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .testimonial h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .testimonial p.text-muted {
+    font-size: 0.9rem;
+  }
+  
+  /* Blog section */
+  /* ------------------------------------ */
+  .card-img-top {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+ /* Education resuorces  */
+ /*-------------------------------------  */
+ .resource-card {
+    margin: 15px 0; /* Space between resource cards */
+    padding: 20px;
+    border: 1px solid #dee2e6; /* Border for cards */
+    border-radius: 5px; /* Rounded corners */
+    transition: box-shadow 0.3s; /* Smooth shadow effect */
+}
+
+.resource-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.resource-link {
+    padding:15px 20px ;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    background-color:darksalmon;
+    padding-bottom: 10px;
+    color:white; /* Bootstrap link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.resource-link:hover {
+    color:black; /* Darker link color on hover */
+}
+
+/* Faq section  */
+/* ----------------------------------- */
+
+      
+
+        .accordion-button {
+            padding-top: 10px;
+            font-weight: bold; /* Bold text for questions */
         }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+/*------------------------------------------------------ */
+/* BLood donation page  */
+
+/* blood section */
+.donation-section {
+    background-color: #f8f9fa;
+   
+}
+.notification-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-custom {
+    background-color:#ff4d4d !important;
+    color: white !important;
+    flex: 1;
+    font-weight: bold !important;
+    border-radius: 0 !important;
+    margin: 7px;
+  /* Padding for buttons */
+     /* Remove border radius */
+    font-size:1.5rem; /* Increase font size for better visibility */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.btn-custom:hover {
+
+    background-color:#007bff !important;
+    color: black !important;
+    font-weight: bold !important;
+    opacity: 0.9; /* Slightly dim button on hover */
+}
+
+@media (max-width: 767.98px) { /* For mobile devices */
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Space between buttons */
+    }
+    .btn-custom {
+       
+        flex: 0 0 calc(25% - 10px); /* Two buttons per row with some space */
+        margin-bottom: 10px; /* Add margin between rows */
+    }
+}
+
+@media (min-width: 768px) { /* For tablets and larger devices */
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* align-items: center; */
+        margin-left: 50px;
+    }
+    .btn-custom {
+        flex: 0 0 calc(25% - 10px);
+        margin-bottom: 10px;
+       
+    }
+}
+@media (min-width: 993px) { /* For tablets and larger devices */
+    .btn-container {
+       
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btn-custom {
+        flex:1;
+       
+       
+    }
+}
+/*---------- Custom About Css--------- */
+/* --------------------------------------------------------------------- */
+.about-headline{
+   
+        color:rgba(0, 0, 0, 0.881);
+        font-size: 1.7rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 90%;
+    
+}
+.about-section{
+    position: relative;
+    background-image: url(./images/about.webp);
+    background-repeat: no-repeat;
+    background-size: cover; /* Image covers the entire area */
+    background-position: center; /* Centers the image */
+    height: 60vh; /* Full height */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Hide overflow */
+}
+
+.section-donation-process {
+    padding: 50px 0;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+
+
+.child-div1 {
+    display: flex;
+    flex-direction: column; /* Vertically align items */
+}
+
+.child-div1 p {
+    margin: 0; /* Remove default margin */
+    line-height: 1.1; /* Adjust line height for better readability */
+    text-align: justify; /* Align text to both left and right */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) { /* Mobile and tablet styles */
+    .child-div1 p {
+        
+        font-size: 14px; /* Adjust font size for mobile */
+    }
+    #p2{
+        display: none;
+    }
+}
+@media (max-width: 576px) { /* Mobile and tablet styles */
+    .child-div1 p {
+        
+        font-size: 14px; /* Adjust font size for mobile */
+    }
+    #p2{
+        display: none;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) { /* Laptop styles */
+    .child-div1 p {
+        font-size: 16px; /* Adjust font size for laptops */
+    }
+}
+
+@media (min-width: 1025px) { /* Desktop styles */
+    .child-div1 p {
+        font-size: 18px; /* Adjust font size for desktops */
+    }
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .section-donation-process {
+        padding: 20px 0;
+    }
+    .list-group-item {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+.bg-darkred {
+    background-color:#e9ecef; /* Dark Red */
+    padding: 50px 0; /* Padding for top and bottom */
+    color:black; /* White text for contrast */
+}
+
+.child-div1 p {
+    color: black;
+    font-size: 1.1rem; /* Slightly larger text */
+    line-height: 1.5; /* Spacing between lines */
+    margin-bottom: 20px; /* Spacing between paragraphs */
+}
+
+.card {
+    overflow: hidden; /* To maintain uniform height */
+    border: none; /* Remove card border */
+}
+
+.card-img-top {
+  
+    width: 100%;
+    height: 250px; /* Set a fixed height */
+    object-fit: cover; /* Ensure images cover the card area */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.card-img-top:hover {
+    transform: scale(1.05); /* Scale image on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+}
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+}
+
+/* Section Styles */
+.section-vision {
+    background: linear-gradient(45deg, #cc000091, #cc00009d); /* Red gradient background */
+    padding: 50px 0; /* Padding around the section */
+    color: white;
+}
+
+
+
+.child-div1 {
+    padding: 20px;
+}
+
+.child-div1 p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+
+
+/* Background color for child-div2 (instead of image) */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* For mobile */
+    .child-div1, .child-div2 {
+        margin-bottom: 20px;
+    }
+    .section-vision h2 {
+        font-size: 2rem;
+    }
+    .vision-btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) { /* For tablets */
+    .section-vision h2 {
+        font-size: 2.2rem;
+    }
+    .vision-btn {
+        padding: 9px 18px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1025px) { /* For laptops and desktops */
+    .section-vision h2 {
+        font-size: 2.5rem;
+    }
+    .vision-btn {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+
+/* Section Styles */
+.gift-section {
+    background-color: #5bc4dc; /* Same light blue background */
+    padding: 50px 0; /* Spacing around the section */
+    color: white;
+}
+
+.gift-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: white; /* Text color for the heading */
+}
+
+ .about-donate-btn {
+    font-weight: bold !important;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.about-donate-btn:hover {
+    background-color:white !important;
+    color: black !important;;
+    border: 2px solid #5bc4dc !important;
+    font-weight: bold;
+} 
+
+@media (max-width: 576px) {
+   #about-donate-btn{
+        padding: 10px 15px !important;
+        font-size: 1.0rem;
+        font-weight: normal !important;
+   }
+   #subscribe-btn{
+    padding: 10px 14px !important;
+    font-size: 1.0rem;
+    font-weight: normal !important;
+   }
+}
+
+
+.subscribe-btn {
+    font-weight: bold !important;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+    transition: background-color 0.3s ease !important;
+}
+
+.subscribe-btn:hover {
+  
+    background-color:darkred !important;
+    color: white !important;
+    border: none !important;
+    /* border: 2px solid red !important; */
+    font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+    .col-lg-6 {
+        order: 1; /* Image comes first */
     }
 
-    /* Responsive Footer */
-    @media (max-width: 768px) {
-        .footer-about, .footer-links, .footer-contact {
-            text-align: center;
-        }
-
-        .social-icons {
-            text-align: center;
-        }
-
-        .social-icon {
-            margin-bottom: 10px;
-        }
+    .col-lg-5 {
+        order: 2; /* Text comes after image */
     }
+}
+.section-involvement p {
+    text-align: justify; /* Ensures even line alignment on both sides */
+    line-height: 1.6; /* Adds space between lines for better readability */
+   /* Adds indent to the first line of each paragraph */
+    margin-bottom: 15px; /* Adds space between paragraphs */
+    font-size: 16px; /* Ensures readable font size */
+}
+
+.section-involvement img {
+    margin-bottom: 20px; /* Add gap between image and text */
+}
+/* ----------------------------------------------------------------- */
+/* Custom Contact page Css */
+
+.contact-section {
+    zoom:0%;
+    position: relative;
+    background-image: url(./images/contact.webp);
+    background-repeat: no-repeat;
+    background-position: top bottom left right; 
+    background-size:cover; /* Image covers the entire area */
+/* Centers the image */
+    height: 85vh; /* Full height */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Hide overflow */
+}
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.241); /* Black with 50% opacity */
+    z-index: 1;
+}
+.content{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px !important;
+    font-weight: bold;
+    color: white;
+    text-shadow: 5px 3px 5px rgba(0, 0, 0, 0.123);
+    
+}
+/* Basic styles */
+.container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
+}
+
+h2 {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Contact Box */
+.contact-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Working Hours */
+.working-hours {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Unique Button Styles */
+.unique-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.unique-btn:hover {
+    background-color: #FF6347; /* Tomato color */
+    color: white !important;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+
+
+/* Animation styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Image styles */
+.indent {
+    margin: 0;
+    padding-left: 20px !important; /* Adjust as needed */
+}
+
+.contact-section-form {
+    padding: 50px;
+    background-color: #e9ecef; /* Light background color */
+    width: 100%; /* Full width */
+     /* Vertical padding */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 2s forwards; /* Fade-in animation */
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Fully visible */
+    }
+}
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.form-control {
+    border-radius: 0.5rem; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth border color transition */
+}
+.form-control:focus {
+    border-color:#B22222;/* Blue border on focus */
+    box-shadow: 0 0 5px #B22222; /* Shadow effect on focus */
+}
+
+.contact-info p {
+    margin: 0; /* No margin for paragraphs */
+}
+.contact-info h3 {
+    margin-bottom: 10px; /* Spacing for headings */
+}
+.contact-info {
+    /* margin-top: 20px; */
+    height: 35vh;
+ 
+    background-color: #f8f9fa; /* Light background for the contact info */
+    padding: 20px; /* Padding around the content */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0px 0px   15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+.text-primary {
+    color: #007bff; /* Primary color for headings */
+    font-size: 1.5rem; /* Font size for main heading */
+}
+
+
+
+.contact-info i {
+    color: #B22222; /* Icon color */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.map-section{
+    background-color: #ff4b2b27;
+}
+/* Registration page design  */
+/* --------------------------------------------------------- */
+/* Base styles for all screens */
+/* Background image and modal */
+.registration-background {
+    position: relative;
+    background-image: url('./images/register.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* Padding for smaller devices */
+    overflow: hidden; /* Ensure no overflow */
+}
+.registration-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.134); /* কালো রঙ এবং opacity 0.5 */
+    z-index: 2; /* ব্যাকগ্রাউন্ড ইমেজের উপরে রাখার জন্য */
+}
+.login-background {
+    position: relative; /* Child elements overlay করতে position relative */
+    background-image: url('./images/login.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+}
+.login-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.151); /* কালো রঙ এবং opacity 0.5 */
+    z-index: 1; /* ব্যাকগ্রাউন্ড ইমেজের উপরে রাখার জন্য */
+}
+/* Modal */
+.registration-modal {
+    background-color: rgba(255, 255, 255, 0.901);
+    z-index: 2;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; /* Adjusted max-width */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.184);
+    animation: modalSlideIn 2.5s ease-in-out;
+    height: auto;
+    max-height: 100vh; /* Restrict modal height to 80% of viewport */
+}
+.login-modal {
+    position: relative;
+    margin-top: -200px !important;
+    background-color: rgba(255, 255, 255, 0.734);
+    z-index: 2;
+    padding: 60px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; /* Adjusted max-width */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.388);
+    animation: modalSlideIn 2s ease-in-out;
+    height: auto;
+    max-height: 100vh; /* Restrict modal height to 80% of viewport */
+}
+/* Custom input styling */
+.custom-input {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.custom-input input {
+    width: 100%;
+    padding: 10px 40px; /* Space for icons */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.custom-input input:focus {
+    outline: none;
+    border-image: linear-gradient(to right, #ff416c, #ff4b2b) 1;
+}
+
+.custom-input label {
+    position: absolute;
+    top: 50%;
+    left: 40px; /* Adjusted for icon */
+    transform: translateY(-50%);
+    font-size: 16px;
+    color:#ff416c;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.custom-input .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color:;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color:;
+}
+
+.password-toggle i {
+    font-size: 18px;
+}
+
+
+.custom-input input:focus + label,
+.custom-input input:not(:placeholder-shown) + label {
+    top: 0;
+    left: 5px;
+    font-size: 12px;
+    color: #ff416c;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-image: linear-gradient(to right, #ff416c, #ff4b2b);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, #ff4b2b, #ff416c);
+}
+
+/* Modal animation */
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+
+/* Extra small devices (mobiles < 576px) */
+@media (max-width: 575.98px) {
+    .registration-modal {
+        max-width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+
+    }
+    .login-modal{
+        max-width: 100%;
+        max-height: 60vh;
+
+    }
+    .registration-background {
+        background-image: none !important;
+
+
+    }
+    .login-background{
+        background-position: top;
+        padding: 5px;
+    }
+}
+
+/* Small devices (tablets >= 576px and < 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .registration-modal {
+        max-width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+}
+
+/* Medium devices (tablets >= 768px and < 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .registration-modal {
+        max-width: 70%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Large devices (laptops >= 992px and < 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .registration-modal {
+        max-width: 50%; /* Reduced the width for larger screens */
+        max-height: 100vh;
+        /* margin-top: -150px; */
+    }
+}
+
+/* Extra large devices (desktops >= 1200px) */
+@media (min-width: 1200px) {
+    .registration-modal {
+        max-width: 40%; /* Adjusted width to avoid overflow */
+        max-height: 100vh;
+        /* margin-top: -160px; */
+    }
+}
