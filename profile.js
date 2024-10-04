@@ -4,10 +4,7 @@ let profileId = "";
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem("authToken");
 
-    if (!token) {
-        window.location.href = "/login"; // Redirect if not authenticated
-        return;
-    }
+
 
     const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
 
