@@ -103,99 +103,6 @@ const handleregisterForm = (event) => {
 };
 
 
-// Attach event listener to form
-// registerForm.addEventListener("submit", handleregisterForm);
-
-// Attaching the function to the form's submit event
-// registerForm.addEventListener("submit", handleregisterForm);
-
-// const handleRegistration = (event) => {
-//     event.preventDefault();
-
-//     const form = document.getElementById("registration-form");
-//     const formData = new FormData(form);
-
-//     const registrationData = {
-//         username: formData.get("username"),
-//         first_name: formData.get("first_name"),
-//         last_name: formData.get("last_name"),
-//         email: formData.get("email"),
-//         password: formData.get("password"),
-//         confirm_password: formData.get("confirm_password"),
-//     };
-
-//     const username = registrationData.username;
-//     const email = registrationData.email;
-//     const password = registrationData.password;
-//     const confirm_password = registrationData.confirm_password;
-
-//     // Regex to validate the username: must contain letters and numbers, no spaces, underscores allowed
-//     const usernameRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d_]+$/;
-
-//     if (!usernameRegex.test(username)) {
-//         document.getElementById("error").innerText =
-//             "Username must contain both letters and numbers, cannot contain spaces, but can contain underscores.";
-//         return;
-//     } else {
-//         document.getElementById("error").innerText = "";
-//     }
-
-//     if (password !== confirm_password) {
-//         document.getElementById("error").innerText =
-//             "Password and confirm password do not match.";
-//         return;
-//     }
-
-//     if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-//         document.getElementById("error").innerText =
-//             "Password must contain at least eight characters, including one letter, one number, and one special character.";
-//         return;
-//     }
-
-//     // Reset the error message before making the request
-//     document.getElementById("error").innerText = "";
-
-//     fetch("https://cildank-shop.onrender.com/auth/register/", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(registrationData),
-//     })
-//         .then(response => response.json().then(data => ({ status: response.status, body: data })))
-//         .then(result => {
-//             if (result.status === 200) {
-//                 alert("Registration Successful. Please check your email for confirmation.");
-//             } else if (result.status === 400) {
-//                 // Handling specific error messages from the API
-//                 let errorMessage = "";
-
-//                 if (result.body.username) {
-//                     errorMessage += result.body.username[0] + " ";
-//                 }
-
-//                 if (result.body.email) {
-//                     errorMessage += result.body.email[0] + " ";
-//                 }
-
-//                 if (result.body.error) {
-//                     errorMessage += result.body.error[0] + " ";
-//                 }
-
-//                 if (errorMessage === "") {
-//                     errorMessage = "An error occurred during registration.";
-//                 }
-
-//                 document.getElementById("error").innerText = errorMessage.trim();
-//             }
-//         })
-//         .catch(error => {
-//             console.error("Error:", error);
-//             document.getElementById("error").innerText =
-//                 "An unexpected error occurred. Please try again later.";
-//         });
-//   };
-
 const handleLogin = (event) => {
   event.preventDefault();
 //   const token = localStorage.getItem("authToken");
@@ -280,3 +187,4 @@ const handleLogin = (event) => {
         toggleIcon.classList.add("fa-eye");
     }
 }
+

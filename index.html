@@ -21,7 +21,7 @@
   </header>
   <section class="banner-sections">
     <!-- এখানে কোনো img ট্যাগ নেই -->
-    <div class="overlay">
+    <div class="overlay" id="overlay">
       <!-- <div class="banner-content ">
         <button class="donate-btn ">Donate Blood</button>
 
@@ -31,16 +31,16 @@
 
 
   <!-- News and update section -->
-  <section style="background-color: rgba(128, 128, 128, 0.622);">
+  <section style="background-color:rgba(255, 0, 0, 0.475)">
     <div class="container py-5">
       <div class="row justify-content-center">
         <!-- News Card 1 -->
-        <div class="card  news-card py-5 px-5">
-          <div class="card-body">
-            <h5 class="navbar-brand fs-2 opacity-75">News and Updates</h5>
-            <h3 class="card-title fs-4">Urgent! Donors Needed, Especially Type O and Platelets.</h3>
-            <p class="card-text">Find a center or drive near you. Same day appointments available. <strong class=""><a
-                  href="./donate_blood.html" class="text-decoration-none text-danger">Give blood Now</a></strong></p>
+        <div class="card  news-card py-5 px-5" style="background-color:rgba(220, 20, 60, 0.442)">
+          <div class="card-body text-white ">
+            <h5 class="navbar-brand fs-2 opacity-100">News and Updates</h5>
+            <h3 class="card-title fs-4 opacity-100"></h3>
+            <p class="card-text opacity-100"> <strong class=""><a
+                  href="./donate_blood.html" class="text-decoration-none " ></a></strong></p>
           </div>
         </div>
       </div>
@@ -48,56 +48,29 @@
     </div>
   </section>
   <!-- Upcoming events  -->
-  <section class="upcoming event" style="background-color: rgba(216, 191, 216, 0.512);">
-    <div class="container py-5">
-      <h2 class="text-center mb-4 navbar-brand fs-2 opacity-75">Upcoming Events</h2>
-      <div class="row">
-        <!-- Event Card 1 -->
-        <div class="col-md-4 event-card">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="event-title opacity-75">Blood Donation Drive</h5>
-              <p class="event-date ">September 30, 2024</p>
-              <p class="event-description">Join us for a blood donation drive to save lives. Your contribution matters!
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Event Card 2 -->
-        <div class="col-md-4 event-card">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="event-title opacity-75">Health Awareness Campaign</h5>
-              <p class="event-date">October 15, 2024</p>
-              <p class="event-description">Participate in our health awareness campaign and learn more about healthy
-                living.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Event Card 3 -->
-        <div class="col-md-4 event-card">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="event-title opacity-75">Community Health Fair</h5>
-              <p class="event-date">October 30, 2024</p>
-              <p class="event-description">Join us for a community health fair with free screenings and health
-                resources.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
+  <section id="notification-section" class="padding-large" style="background-color:rgba(128, 0, 0, 0.807)">
+    <h2 class="text-align-center margin-bottom-large navbar-title fw-bold opacity-100 text-white text-uppercase">Donate Events</h2>
+  
+    <div id="notification-list" class="row-notifications"></div>
+  
+    <div class="centered-button-wrapper margin-top-medium">
+      <h6 class="button-text-uppercase">
+        <a class="text-decoration-none padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-danger bg-white fw-bold" href="./all_notification.html">View All</a>
+      </h6>
     </div>
-
   </section>
+  
+  
 
   <!-- Blood Donation Process  -->
-  <section style="background-color: rgba(173, 216, 230, 0.701);">
+  <section style="background-color:rgba(255, 0, 0, 0.674);">
 
     <div class="container section">
       <div class="row align-items-center">
         <div class="col-md-5 child-div1">
-          <h2 class="text-center pt-5 navbar-brand fs-3" id="blood-process">Blood Donation Process</h2>
-          <p class="slide-in">This engaging video visually explains the blood donation process from start to finish,
+          <h2 class="text-center pt-5 navbar-brand fs-3 text-white" id="blood-process" style="letter-spacing: 1px;">Blood Donation Process</h2>
+          <p class="slide-in text-white">This engaging video visually explains the blood donation process from start to finish,
             making it easy to
             understand how you can save lives by donating blood.</p>
         </div>
@@ -110,55 +83,29 @@
     </div>
   </section>
   <!-- Donation History  -->
-  <section style="background-color:rgba(178, 34, 34, 0.293)">
-    <div class="container section py-5">
-      <h2 class="text-center navbar-brand fs-2 opacity-75">Donation History</h2>
-      <p class="text-center fs-5">View your donation history and track your impact over time.</p>
+<!-- Donation History  -->
+<section style="background-color: rgba(178, 34, 34, 0.793)">
+  <div class="container section py-5">
+      <h2 class="text-center navbar-brand fs-2 text-white">Donation History</h2>
+      <p class="text-center fs-5 text-white">View donors donation history and track your impact over time.</p>
 
-      <div class="row">
-        <div class="col-md-4 pb-5">
-          <div class="card px-4 py-4">
-            <div class="card-body py-4">
-              <h5 class="card-title">Donation Date: 2024-09-01</h5>
-              <p class="card-text"><strong>Donation Amount:</strong> $50</p>
-              <p class="card-text"><strong>Donation Type:</strong> Blood Donation</p>
-              <p class="card-text"><strong>Impact:</strong> Saved 3 lives</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card pb-5">
-            <div class="card-body px-4 py-4">
-              <h5 class="card-title">Donation Date: 2024-08-15</h5>
-              <p class="card-text"><strong>Donation Amount:</strong> $100</p>
-              <p class="card-text"><strong>Donation Type:</strong> Blood Donation</p>
-              <p class="card-text"><strong>Impact:</strong> Saved 6 lives</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card pb-5">
-            <div class="card-body px-4 py-4">
-              <h5 class="card-title">Donation Date: 2024-08-15</h5>
-              <p class="card-text"><strong>Donation Amount:</strong> $100</p>
-              <p class="card-text"><strong>Donation Type:</strong> Blood Donation</p>
-              <p class="card-text"><strong>Impact:</strong> Saved 6 lives</p>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Add more cards as needed -->
-
+      <div class="row" id="donationHistoryContainer">
+          <!-- Donation cards will be populated here by JavaScript -->
       </div>
-    </div>
-  </section>
+      <div class="centered-button-wrapper margin-top-medium">
+        <h6 class="button-text-uppercase">
+          <a class="text-decoration-none padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-danger bg-white fw-bold" href="./all_donation_history.html">View All</a>
+        </h6>
+      </div>
+
+       
+  </div>
+</section>
+
   <!-- Faq section  -->
-  <section>
+  <section style="background-color: rgba(139, 0, 0, 0.758);">
     <div class="container section py-5">
-      <h2 class=" navbar-brand text-center pb-3 fs-2 opacity-75">Frequently Asked Questions</h2>
+      <h2 class="  text-center frequently-hedding pb-3 fs-2 opacity-100 text-white">Frequently Asked Questions</h2>
       
       <div class="accordion" id="faqAccordion">
           <div class="accordion-item">
@@ -230,12 +177,12 @@
   </section>
 
   <!-- Content Section (Your page content goes here) -->
-  <section class="testimonials-section py-5">
+  <!-- <section class="testimonials-section py-5" style="background-color:rgba(220, 20, 60, 0.626);">
     <div class="container">
-      <h2 class="text-center mb-5 navbar-brand fs-2 opacity-75">Testimonials</h2>
+      <h2 class="text-center mb-5 navbar-brand text-white fs-2 opacity-100">Testimonials</h2>
       <div class="row text-center">
 
-        <!-- Testimonial 1 -->
+        
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="testimonial p-4 rounded">
             <div class="quote-icon mb-3">
@@ -251,7 +198,7 @@
           </div>
         </div>
 
-        <!-- Testimonial 2 -->
+        
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="testimonial p-4 rounded">
             <div class="quote-icon mb-3">
@@ -266,7 +213,7 @@
           </div>
         </div>
 
-        <!-- Testimonial 3 -->
+   
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="testimonial p-4 rounded">
             <div class="quote-icon mb-3">
@@ -284,107 +231,81 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- Blog section -->
-  <section class="blog-section" style="background-color: aliceblue;">
+<!-- Blog section -->
+<section class="blog-section" style="background-color:#e34334ba">
+  <div class="container section py-5">
+    <h2 class="text-center navbar-brand fs-2 text-white">Blog Section</h2>
+    <h5 class="text-center pb-3 text-white">Share insights, stories, and tips related to blood donation.</h5>
 
-    <div class="container section py-5">
-      <h2 class="text-center navbar-brand fs-2 opacity-75">Blog Section</h2>
-      <h5 class="text-center pb-3">Share insights, stories, and tips related to blood donation.</h5>
-
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Blog Post 1">
-            <div class="card-body">
-              <h5 class="card-title">The Importance of Blood Donation</h5>
-              <p class="card-text">Learn why blood donation is crucial and how it saves lives.</p>
-              <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Blog Post 2">
-            <div class="card-body">
-              <h5 class="card-title">Tips for First-Time Donors</h5>
-              <p class="card-text">Essential tips for those donating blood for the first time.</p>
-              <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Blog Post 3">
-            <div class="card-body">
-              <h5 class="card-title">What Happens After You Donate Blood?</h5>
-              <p class="card-text">Discover the journey of your blood after donation.</p>
-              <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Add more blog posts as needed -->
-
-      </div>
+    <div class="row" id="blog-container">
+      <!-- Blog cards will be inserted here dynamically -->
     </div>
-  </section>
 
+    <!-- <div class="centered-button-wrapper margin-top-medium">
+      <h6 class="button-text-uppercase">
+        <a id="view-more" class="text-decoration-none padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-white" href="./blog.html">View More</a>
+      </h6>
+    </div> -->
+  </div>
+</section>
+
+
+  
+  
   <!-- Education resurses -->
-   <section>
+   <section style="background-color:rgba(139, 0, 0, 0.896)">
     <div class="container section py-5">
-      <h2 class="text-center navbar-brand fs-2 opacity-75">Educational Resources</h2>
-      <p class="text-center fs-5">Articles and links about blood donation, health, and safety.</p>
+      <h2 class="text-center navbar-brand fs-2 text-white" style="letter-spacing: 1px;">Educational Resources</h2>
+      <p class="text-center fs-5 text-white">Articles and links about blood donation, health, and safety.</p>
       
       <div class="row">
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">Blood Donation Basics</h5>
-                  <p>Understand the fundamentals of blood donation, including who can donate and the benefits of donating blood.</p>
-                  <a href="https://www.redcrossblood.org/donate-blood/how-to-donate.html" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">Blood Donation Basics</h5>
+                  <p class="text-white mt-2 ">Understand the fundamentals of blood donation, including  the benefits of donating blood.</p>
+                  <a href="https://www.youtube.com/watch?v=YHxdhI5ZrHc" style="" class="resource-link " target="_blank">Click Me</a>
               </div>
           </div>
           
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">Health Benefits of Donating Blood</h5>
-                  <p>Explore the health benefits for donors, including reduced risk of certain diseases.</p>
-                  <a href="https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/blood-donation/art-20044836" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">Health Benefits of Donating Blood</h5>
+                  <p class="text-white mt-2">Explore the health benefits for donors, including reduced risk of certain diseases.</p>
+                  <a href="https://www.youtube.com/watch?v=HSFGGOVqteo" class="resource-link" target="_blank">Click Me</a>
               </div>
           </div>
           
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">Safety Guidelines for Donors</h5>
-                  <p>Learn about the safety protocols and guidelines to follow before, during, and after donation.</p>
-                  <a href="https://www.who.int/news-room/fact-sheets/detail/blood-safety" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">Safety Guidelines for Donors</h5>
+                  <p class="text-white mt-2">Learn about the safety protocols and guidelines to follow before, during, and after donation.</p>
+                  <a href="https://www.youtube.com/watch?v=YHxdhI5ZrHc" class="resource-link" target="_blank">Click Me</a>
               </div>
           </div>
   
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">Myths About Blood Donation</h5>
-                  <p>Debunk common myths and misconceptions surrounding blood donation.</p>
-                  <a href="https://www.redcrossblood.org/donate-blood/how-to-donate/myths-about-blood-donation.html" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">Myths About Blood Donation</h5>
+                  <p class="text-white mt-2">Debunk common myths and misconceptions surrounding blood donation.</p>
+                  <a href="https://www.youtube.com/watch?v=qm9DZFrLWQU" class="resource-link" target="_blank">Click Me</a>
               </div>
           </div>
   
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">The Blood Donation Process</h5>
-                  <p>A detailed overview of what to expect during the blood donation process.</p>
-                  <a href="https://www.redcrossblood.org/donate-blood/how-to-donate/the-blood-donation-process.html" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">The Blood Donation Process</h5>
+                  <p class="text-white mt-2">A detailed overview of what to expect during the blood donation process.</p>
+                  <a href="https://www.youtube.com/watch?v=oXRVHusvcMU&t=2s" class="resource-link" target="_blank">Click Me</a>
               </div>
           </div>
   
           <div class="col-md-4">
               <div class="resource-card">
-                  <h5 class="card-title">Emergency Blood Needs</h5>
-                  <p>Understand the importance of blood donations during emergencies and disasters.</p>
-                  <a href="https://www.redcross.org/get-help/how-to-help/blood-donations/blood-donation-tips.html" class="resource-link" target="_blank">Read More</a>
+                  <h5 class="card-title text-white">Emergency Blood Needs</h5>
+                  <p class="text-white mt-2">Understand the importance of blood donations during emergencies and disasters.</p>
+                  <a href="https://www.youtube.com/watch?v=KufB1rabAQU" class="resource-link" target="_blank">Click Me</a>
               </div>
           </div>
           
@@ -404,6 +325,7 @@
   <script src="./navbar.js"></script>
   <script src="./footer.js"></script>
   <script src="./auth.js"></script>
+  <script src="./index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

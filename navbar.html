@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./registration.html" id="sign-btn">SignUp</a>
                 </li>
+                
+               
+                
                
               
             </ul>
@@ -37,3 +40,82 @@
         
     </div>
 </nav>
+
+<!-- Create Donation Event Modal -->
+<div
+  class="modal fade"
+  id="donationEventModal" 
+  tabindex="-1"
+  aria-labelledby="donationEventModalLabel" 
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="letter-spacing: 1px;" class="modal-title text-black text-uppercase text-center" id="donationEventModalLabel">Create New Donation Event</h5> <!-- Changed Title -->
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="createDonationEventForm" onsubmit="DonationEventForm(event)"> <!-- Changed Form ID -->
+          <div class="mb-3">
+            <label for="donationEventName" class="form-label text-black fw-bold">Event Name*</label> <!-- Changed Input ID -->
+            <input
+              type="text"
+              class="form-control rounded-0 border-1 border-danger"
+              id="donationEventName" 
+              name="eventName"
+              placeholder="Enter Event Name"
+              required
+            />
+          </div>
+          <div class="mb-3 fw-bold text-black">
+            <label for="donationEventRecipient" class="form-label">Recipient*</label> <!-- Changed Input ID -->
+            <input
+              type="text"
+              class="form-control rounded-0 border-1 border-danger"
+              id="donationEventRecipient" 
+              name="eventRecipient"
+              placeholder="Who to donate blood?"
+              required
+            />
+          </div>
+          <div class="mb-3 fw-bold text-black">
+            <label for="donationBloodGroup" class="form-label rounded-0 border-1 border-danger">Choose Blood Group*</label> <!-- Changed Input ID -->
+            <select
+              class="form-select rounded-0 border-1 border-danger"
+              id="donationBloodGroup" 
+              name="bloodGroup"
+              required
+            >
+              <option value="">Blood group</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+          <div class="mb-3 fw-bold text-black">
+            <label for="donationEventDate" class="form-label">Event Date*</label> <!-- Changed Input ID -->
+            <input
+              type="datetime-local"
+              class="form-control rounded-0 border-1 border-danger"
+              id="donationEventDate" 
+              name="eventDate"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-danger px-3 rounded-0">Create Event</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
