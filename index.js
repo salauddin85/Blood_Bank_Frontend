@@ -3,7 +3,7 @@ const notificationShow = () => {
     const token = localStorage.getItem("authToken");
 
     // Fetch the notifications
-    fetch("http://127.0.0.1:8000/events/notifications/", {
+    fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const notificationShows = () => {
     
     const token = localStorage.getItem("authToken");
     
-    fetch("http://127.0.0.1:8000/events/notifications/", {
+    fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ const notificationShows = () => {
 // Bloog post
 // ------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
-  const apiUrl = 'http://127.0.0.1:8000/blood_bank_releted/blog/';
+  const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/';
   const blogContainer = document.getElementById('blog-container');
   const viewMoreBtn = document.getElementById('view-more');
   let blogData = [];
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // DOnation History
 // --------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = 'http://127.0.0.1:8000/events/dashboard/donation_history/'; // Replace with your actual API endpoint
+  const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/'; // Replace with your actual API endpoint
   const container = document.getElementById('donationHistoryContainer'); // Corrected ID here
 
   fetch(apiUrl)

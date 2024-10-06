@@ -2,7 +2,7 @@ let currentPage = 1;
 const itemsPerPage = 4;
 
 function fetchFeedback(page) {
-    fetch(`http://127.0.0.1:8000/blood_bank_releted/all_feedback/?page=${page}`)
+    fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/all_feedback/?page=${page}`)
         .then(response => response.json())
         .then(data => {
             displayFeedback(data.results);

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrl = 'http://127.0.0.1:8000/events/dashboard/donation_history/'; // Replace with your actual API endpoint
+    const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/'; // Replace with your actual API endpoint
     const container = document.getElementById('donationHistoryContainer'); // Corrected ID here
   
     fetch(apiUrl)
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
           console.log(data);
           const donations = data.donation_history; // First 4 donations
-          console.log(donations, "Showing first 4 donations");
+          // console.log(donations, "Showing first 4 donations");
   
           donations.forEach(donation => {
             const col = document.createElement('div');

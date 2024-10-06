@@ -60,7 +60,7 @@ const notificationForm = (event) => {
   }
 
   // Send a POST request with blood group and location
-  fetch("http://127.0.0.1:8000/events/notifications/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -109,7 +109,7 @@ const notificationShow = () => {
   // }
 
   // Fetch the notifications
-  fetch("http://127.0.0.1:8000/events/notifications/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -191,7 +191,7 @@ const EventForm = (event) => {
   }
 
   // Send a POST request with blood group and location
-  fetch("http://127.0.0.1:8000/events/donation-events/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-events/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if the token is present
 
   // Fetch data from your API
-  fetch("http://127.0.0.1:8000/events/dashboard/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -306,7 +306,7 @@ function AcceptDonation(eventId) {
   const encodedEventId = encodeURIComponent(eventId);
   console.log("Encoded Event ID:", encodedEventId);
 
-  fetch(`http://127.0.0.1:8000/events/acceptdonation/${encodedEventId}/`, {
+  fetch(`https://blood-bank-backend-c7w8.onrender.com/events/acceptdonation/${encodedEventId}/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -345,7 +345,7 @@ let donationData = [];
 
 // Function to fetch donation history from the API
 function fetchDonationHistory() {
-    fetch("http://127.0.0.1:8000/events/dashboard/donation_history/", {
+    fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -466,7 +466,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("authToken");
 
   // Fetch data from your API
-  fetch("http://127.0.0.1:8000/events/dashboard/recipient_requests/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/recipient_requests/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -544,7 +544,7 @@ async function handleFeedbackSubmit(event) {
   };
   console.log(data)
   try {
-      const response = await fetch("http://127.0.0.1:8000/blood_bank_releted/feedback/", {
+      const response = await fetch("https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",

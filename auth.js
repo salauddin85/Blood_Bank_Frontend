@@ -53,7 +53,7 @@ const handleregisterForm = (event) => {
   // Reset the error message before making the request
   document.getElementById("error").innerText = "";
 
-  fetch("http://127.0.0.1:8000/accounts/register/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/accounts/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const handleLogin = (event) => {
 
   console.log("login data", loginData);
 
-  fetch("http://127.0.0.1:8000/accounts/login/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/accounts/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -153,7 +153,7 @@ const handleLogin = (event) => {
   const handleLogout = () => {
   const token = localStorage.getItem("authToken");
   console.log("logout token",token);
-  fetch("http://127.0.0.1:8000/accounts/logout/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/accounts/logout/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

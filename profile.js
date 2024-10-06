@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
+    const profileUrl = 'https://blood-bank-backend-c7w8.onrender.com/accounts/profile/';
 
     const fetchProfileData = () => {
         fetch(profileUrl, {
@@ -97,7 +97,7 @@ function sendData(data) {
   const token = localStorage.getItem("authToken"); // টোকেন নিন
   // প্রোফাইল আইডি এখানে দিন
 
-  fetch(`http://127.0.0.1:8000/accounts/profile/${profileId}`, {
+  fetch(`https://blood-bank-backend-c7w8.onrender.com/accounts/profile/${profileId}`, {
       method: 'PATCH', // অথবা PUT ব্যবহার করুন
       body: data, // FormData হিসেবে ডেটা পাঠান
       headers: {
@@ -130,7 +130,7 @@ function sendData(data) {
 let donationData = []; // Global variable to hold the fetched donation history data
 
 function fetchDonationHistory() {
-  fetch("http://127.0.0.1:8000/events/donation-history/", {
+  fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-history/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -258,7 +258,7 @@ window.onload = fetchDonationHistory;
 
 
 
-
+// Feedback
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchFeedback();
@@ -268,7 +268,7 @@ async function fetchFeedback() {
   const token = localStorage.getItem("authToken");
 
   try {
-      const response = await fetch('http://127.0.0.1:8000/blood_bank_releted/feedback/', {
+      const response = await fetch('https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -293,7 +293,7 @@ function displayFeedback(feedbackData) {
 
   feedbackData.forEach(feedback => {
       const feedbackDiv = document.createElement('div');
-      feedbackDiv.className = 'feedback-item py-5 px-5  w-75 m-auto';
+      feedbackDiv.className = 'feedback-item py-5 px-5 text-white  w-75 m-auto';
       feedbackDiv.innerHTML = `
           <h4>User: ${feedback.donor}</h4>
           <h5 class="mt-2">Rating: ${feedback.rating}</h5>
@@ -312,7 +312,7 @@ async function openUpdateModal(feedbackId) {
   const token = localStorage.getItem("authToken");
 
   try {
-      const response = await fetch(`http://127.0.0.1:8000/blood_bank_releted/feedback/${feedbackId}/`, {
+      const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -350,7 +350,7 @@ document.getElementById('submitFeedbackBtn').addEventListener('click', async () 
   };
 
   try {
-      const response = await fetch(`http://127.0.0.1:8000/blood_bank_releted/feedback/${feedbackId}/`, {
+      const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json',
@@ -377,7 +377,7 @@ async function deleteFeedback(feedbackId) {
 
   if (confirm('Are you sure you want to delete this feedback?')) {
       try {
-          const response = await fetch(`http://127.0.0.1:8000/blood_bank_releted/feedback/${feedbackId}/`, {
+          const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
               method: 'DELETE',
               headers: {
                   'Content-Type': 'application/json',
@@ -396,3 +396,18 @@ async function deleteFeedback(feedbackId) {
       }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================================
+

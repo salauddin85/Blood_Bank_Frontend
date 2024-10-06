@@ -1,7 +1,7 @@
 let nextPageUrl = null; 
 let previousPageUrl = null;
 
-async function fetchBlogPosts(pageUrl = 'http://127.0.0.1:8000/blood_bank_releted/blog/') {
+async function fetchBlogPosts(pageUrl = 'https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/') {
     const token = localStorage.getItem("authToken");
 
     try {
@@ -93,7 +93,7 @@ function submitBlog() {
     formData.append('content', content);
     formData.append('image', imageFile); // Append the image file
 
-    fetch('http://127.0.0.1:8000/blood_bank_releted/blog/', {
+    fetch('https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/', {
         method: 'POST',
         headers: {
             'Authorization': `Token ${token}`
@@ -123,7 +123,7 @@ function submitBlog() {
 // ---------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
-    const apiUrl = 'http://127.0.0.1:8000/blood_bank_releted/blog/';
+    const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/';
     const blogContainer = document.getElementById('blog-container');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayBlogs(blogs) {
       blogContainer.innerHTML = ''; // Clear the container before rendering
       blogs.forEach(blog => {
+        console.log(blog.image)
         const blogCard = `
           <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
             <div class="blog-cardblock h-100">

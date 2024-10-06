@@ -7,7 +7,7 @@ const notificationShows = (page = 1) => {
 
   const token = localStorage.getItem("authToken");
 
-  fetch(`http://127.0.0.1:8000/events/notifications/?page=${page}`, {
+  fetch(`https://blood-bank-backend-c7w8.onrender.com/events/notifications/?page=${page}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

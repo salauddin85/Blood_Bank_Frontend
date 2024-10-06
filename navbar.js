@@ -85,7 +85,7 @@ const DonationEventForm = (event) => { // Changed Function Name
     }
 
     // Send a POST request with blood group and location
-    fetch("http://127.0.0.1:8000/events/donation-events/", {
+    fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-events/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
