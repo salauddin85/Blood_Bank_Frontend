@@ -9,10 +9,10 @@ const notificationShows = (page = 1) => {
 
   fetch(`https://blood-bank-backend-c7w8.onrender.com/events/notifications/?page=${page}`, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    },
+    // headers: {
+    //   "Content-Type": "application/json",
+    //   Authorization: `Token ${token}`,
+    // },
   })
     .then((res) => {
       if (!res.ok) {

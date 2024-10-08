@@ -54,7 +54,7 @@ const notificationForm = (event) => {
 
   // Check if the token is present
   if (!token) {
-    alert("You are not an authenticated user. Redirecting to login page.");
+    alert("You are not an authenticated user.Please Login");
 
     return;
   }
@@ -113,7 +113,7 @@ const notificationShow = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+      // Authorization: `Token ${token}`, // Ensure the token is correctly formatted
     },
   })
     .then((res) => {
@@ -185,7 +185,7 @@ const EventForm = (event) => {
 
   // Check if the token is present
   if (!token) {
-    alert("You are not an authenticated user. Redirecting to login page.");
+    alert("You are not an authenticated user.Please Login");
 
     return;
   }
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+      // Authorization: `Token ${token}`, // Ensure the token is correctly formatted
     },
   })
     .then((res) => {
@@ -305,7 +305,11 @@ function AcceptDonation(eventId) {
 
   const encodedEventId = encodeURIComponent(eventId);
   console.log("Encoded Event ID:", encodedEventId);
+  if (!token) {
+    alert("You are not an authenticated user.Please Login");
 
+    return;
+  }
   fetch(`https://blood-bank-backend-c7w8.onrender.com/events/acceptdonation/${encodedEventId}/`, {
     method: "POST",
     headers: {
@@ -346,11 +350,11 @@ let donationData = [];
 // Function to fetch donation history from the API
 function fetchDonationHistory() {
     fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${localStorage.getItem("authToken")}`, // Include your auth token here
-        },
+        method: "GET"
+        // headers: {
+        //     "Content-Type": "application/json",
+        //     // Authorization: `Token ${localStorage.getItem("authToken")}`, // Include your auth token here
+        // },
     })
     .then((response) => {
         if (!response.ok) {
@@ -468,10 +472,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch data from your API
   fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/recipient_requests/", {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`, // Ensure the token is correctly formatted
-    },
+    // headers: {
+    //   "Content-Type": "application/json",
+    //   // Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+    // },
   })
     .then((res) => {
       if (!res.ok) {
@@ -535,7 +539,11 @@ async function handleFeedbackSubmit(event) {
 
   // Get the auth token from local storage
   const token = localStorage.getItem("authToken");
+  if (!token) {
+    alert("You are not an authenticated user.Please Login");
 
+    return;
+  }
   // Prepare the data to be sent
   const data = {
       feedback: feedbackText,

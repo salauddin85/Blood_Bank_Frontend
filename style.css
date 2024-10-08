@@ -3,7 +3,7 @@
 /* Custom Navbar Styling */
 .navbar {
     background-color: #B22222; /* Deep Blood Red Color */
-    padding: 25px !important;
+    padding: 20px !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a professional look */
 }
 /* Default logo size for larger screens (desktop, laptop) */
@@ -192,17 +192,23 @@
 .social-icon .fa-facebook {
     color: #3b5998; /* Facebook's original blue */
 }
-
+.social-icon .fa-facebook:hover{
+    color: #FF6347;
+}
 /* Instagram Icon */
 .social-icon .fa-instagram {
     color: #E1306C; /* Instagram's original gradient color */
 }
-
+.social-icon .fa-instagram:hover{
+    color: #FF6347;
+}
 /* YouTube Icon */
 .social-icon .fa-youtube {
     color: #FF0000; /* YouTube's original red */
 }
-
+.social-icon .fa-youtube:hover {
+    color: #FF6347;
+}
 /* Hover effect */
 .social-icon:hover {
     transform: scale(1.1); /* Slight zoom on hover */
@@ -1720,9 +1726,10 @@ h2 {
     width: 400px; /* Set your desired width */
     height: 400px; /* Set your desired height */
      /* Ensures the image covers the area without distortion */
-    border-radius: 50%; /* Makes it circular */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    /* border-radius: 50%; Makes it circular */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
 }
+
 
 
 .custom-profile-name {
@@ -1792,9 +1799,10 @@ h2 {
     .profile-image {
         width: 300px; /* Set your desired width */
         height: 300px; /* Set your desired height */
+        border-radius: 50%;
          /* Ensures the image covers the area without distortion */
-        border-radius: 50%; /* Makes it circular */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+        /* Makes it circular */
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
     }
 }
   
@@ -1813,11 +1821,11 @@ h2 {
     }
     .profile-image {
         margin-top: 20px;
-        width: 400px; /* Set your desired width */
-        height: 400px; /* Set your desired height */
+        width: 300px; /* Set your desired width */
+        height: 300px; /* Set your desired height */
          /* Ensures the image covers the area without distortion */
-        border-radius: 50%; /* Makes it circular */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+        /* Makes it circular */
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
     }
 }
 @media (max-width: 480px) {

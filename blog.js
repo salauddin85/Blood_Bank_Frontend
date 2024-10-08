@@ -1,76 +1,3 @@
-let nextPageUrl = null; 
-let previousPageUrl = null;
-
-async function fetchBlogPosts(pageUrl = 'https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/') {
-    const token = localStorage.getItem("authToken");
-
-    try {
-        const response = await fetch(pageUrl, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${token}`,
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const blogData = await response.json();
-        nextPageUrl = blogData.next;
-        previousPageUrl = blogData.previous;
-
-        displayBlogPosts(blogData.results);
-        updatePaginationButtons();
-    } catch (error) {
-        console.error('Error fetching blog posts:', error);
-    }
-}
-
-function displayBlogPosts(posts) {
-    const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = '';
-
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.className = 'col-lg-4 col-md-6 col-sm-12';
-        postElement.innerHTML = `
-          <div class="blog-card">
-            <div class="blog-post">
-              <img src="${post.image}" alt="${post.title}" class="img-fluid">
-              <div class="p-3 text-center">
-                <h3>${post.title}</h3>
-                <p>${post.content}</p>
-              </div>
-            </div>
-          </div>
-        `;
-        postsContainer.appendChild(postElement);
-    });
-}
-
-function updatePaginationButtons() {
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    prevBtn.style.display = previousPageUrl ? 'block' : 'none';
-    nextBtn.style.display = nextPageUrl ? 'block' : 'none';
-}
-
-document.getElementById('prev-btn').addEventListener('click', () => {
-    if (previousPageUrl) {
-        fetchBlogPosts(previousPageUrl);
-    }
-});
-
-document.getElementById('next-btn').addEventListener('click', () => {
-    if (nextPageUrl) {
-        fetchBlogPosts(nextPageUrl);
-    }
-});
-
-fetchBlogPosts();
 
 // Open modal when the button is clicked
 document
@@ -82,39 +9,47 @@ document
     blogModal.show();
   });
 
-function submitBlog() {
-    const token = localStorage.getItem("authToken");
-    const title = document.getElementById('blogTitle').value;
-    const content = document.getElementById('blogContent').value;
-    const imageFile = document.getElementById('blogImage').files[0]; // Get the file input
+  const submitBlog = (event) => {
+    event.preventDefault(); // Form default submit prevent
+    const blogForm = document.getElementById("blogForm");
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('image', imageFile); // Append the image file
-
+    const token = localStorage.getItem("authToken"); // Token niye asha
+    const formData = new FormData(blogForm); // Form data niye asha (title, content, image)
+    console.log(formData)
+    console.log(token)
+    if (!token) {
+      alert("You are not an authenticated user.Please Login");
+  
+      return;
+    }
+  
+    // fetch API call
     fetch('https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/', {
         method: 'POST',
         headers: {
-            'Authorization': `Token ${token}`
+            Authorization: `Token ${token}`,  // Token header
         },
-        body: formData // Send the FormData object
+        body: formData  // FormData ke body hisebe pathano
     })
     .then(response => {
+        console.log(response);
         if (response.ok) {
             alert('Blog added successfully!');
-            document.getElementById('blogForm').reset(); // Reset the form
+            document.getElementById('blogForm').reset(); // Form reset
             const modal = bootstrap.Modal.getInstance(document.getElementById('addBlogModal'));
             modal.hide(); // Close modal after success
         } else {
-            alert('Failed to add blog.');
+            return response.json().then(data => {
+                console.error('Failed to add blog:', data);
+                alert('Failed to add blog.');
+            });
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Error occurred while adding the blog.');
     });
-}
+};
 
 
 
@@ -137,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
       fetch(`${apiUrl}?page=${page}`)
         .then(response => response.json())
         .then(data => {
+          console.log(data)
           displayBlogs(data.results);
           updatePagination(data);
         })
@@ -147,15 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayBlogs(blogs) {
       blogContainer.innerHTML = ''; // Clear the container before rendering
       blogs.forEach(blog => {
-        console.log(blog.image)
+        console.log(blog.image,"adslfalk")
         const blogCard = `
           <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
             <div class="blog-cardblock h-100">
               <div class="blog-cardbody text-center">
                 <img src="${blog.image}" class="blog-imageimg img-fluid" alt="${blog.title}">
                 <div class="blog-textblock mt-3">
+                  <h5 class="blog-cardhead">Author:${blog.author}</h5>
+
                   <h5 class="blog-cardhead">${blog.title}</h5>
-                  <p class="blog-contentp">${blog.content}...</p>
+                  <p class="blog-contentp">${blog.content}</p>
                 </div>
               </div>
             </div>
@@ -206,4 +144,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial fetch
     fetchBlogs(currentPage);
   });
+  
+
+
+
+
+// const imageUploadimbb=(image)=>{
+
+// }
+
+//   // try image upload
+//   document.getElementById('image-upload-form').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent form from submitting the traditional way
+  
+//     const imageInput = document.getElementById('imageInput').files[0];
+//     const formData = new FormData();
+//     const apiKey = 'ca0a7f8e97446e4139d17010b039c2da'; // ImageBB theke API key niye ekhane bosan
+//     formData.append('image', imageInput);
+  
+//     // Fetch request to upload image
+//     fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+//       method: 'POST',
+//       body: formData
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       if (data.success) {
+//         const imageUrl = data.data.url; // Uploaded image URL
+//         displayImage(imageUrl); // Show the image on the page
+//       } else {
+//         console.error('Image upload failed:', data.error);
+//       }
+//     })
+//     .catch(error => {
+//       console.error('Error uploading image:', error);
+//     });
+//   });
+  
+//   // Function to display the uploaded image
+//   function displayImage(url) {
+//     const uploadedImageDiv = document.getElementById('uploaded-image');
+//     uploadedImageDiv.innerHTML = `<img src="${url}" alt="Uploaded Image" class="img-fluid">`;
+//   }
   

@@ -24,7 +24,7 @@
                
         
                 <!-- Information Section -->
-                <div class="col-md-8 col-lg-7 ps-5 fw-bold">
+                <div class="col-md-12 col-lg-6 col-sm-12 ps-5 fw-bold">
                     <p class="profile-name custom-profile-name"> <small>User Name : </small><small id="userName"></small></p>
                     <p class="profile-name custom-profile-name"> <small>Full Name : </small><small id="profileName"></small></p>
                     <p class="profile-name custom-profile-name"> <small>First Name : </small><small id="firstName"></small></p>
@@ -38,16 +38,19 @@
                     <p class="profile-name custom-profile-name"><small>Health Screening Passed:  </small><small id="healthStatus"></small></p>
                 </div>
                  <!-- Image Section -->
-                 <div class="col-md-4 col-lg-5 text-center mb-3 mb-md-0">
+                 <div class="col-md-12 col-lg-5 col-sm-12 text-center mb-3 mb-md-0">
                     <img src="" alt="Profile Picture" class="profile-image  shadow-sm" id="profileImage">
                 </div>
+
+                
             </div>
+           
 
             <div class="centered-button-wrapper margin-top-medium">
                 <h6 class="button-text-uppercase">
-                    <!-- <button type="button" class="text-decoration-none border-0 padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-white bg-danger" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
+                    <button type="button" class="text-decoration-none border-0 padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-white bg-danger" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
                         Update Profile
-                    </button> -->
+                    </button>
                 </h6>
             </div>
             
@@ -75,30 +78,34 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="updateProfileForm" enctype="multipart/form-data">
+                <form id="updateProfileForm" enctype="multipart/form-data" onsubmit="UpdateprofileForms(event)">
                     <div class="mb-3">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" required>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" required>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" required>
+                        <input type="number" class="form-control" id="age" name="age" required>
                     </div>
                     <div class="mb-3">
                         <label for="mobaile_no" class="form-label">Mobile No</label>
-                        <input type="text" class="form-control" id="mobaile_no" required>
+                        <input type="text" class="form-control" id="mobaile_no" name="mobaile_no" required>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" required></textarea>
+                        <textarea class="form-control" id="address" name="address" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="blood_group" class="form-label">Choose Blood Group*</label>
-                        <select class="form-select" id="blood_group" required>
+                        <select class="form-select" id="blood_group" name="blood_group" required>
                             <option value="">Blood group</option>
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
@@ -135,7 +142,7 @@
     </section>
 
     <div id="feedback-section align-items-center text-center" style="background-color: salmon;">
-        <h2 class="text-center pt-4 navbar-brand fs-3 text-white">User Feedback</h2>
+        <h2 class="text-center pt-4 navbar-brand fs-3 text-white">Your Feedback</h2>
         <div id="feedback-container" class=" py-3 "></div> <!-- Feedback will be appended here -->
 
        

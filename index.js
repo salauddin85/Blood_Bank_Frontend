@@ -4,11 +4,8 @@ const notificationShow = () => {
 
     // Fetch the notifications
     fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`, // Ensure the token is correctly formatted
-        },
+        method: "GET"
+        
     })
         .then((res) => {
             if (!res.ok) {
@@ -54,11 +51,8 @@ const notificationShows = () => {
     const token = localStorage.getItem("authToken");
     
     fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
+      method: "GET"
+      
     })
       .then((res) => {
         if (!res.ok) {
@@ -127,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function displayBlogs(blogs) {
     blogContainer.innerHTML = ''; // Clear the container before rendering
     blogs.forEach(blog => {
+      console.log(blog.image)
       const blogCard = `
         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
           <div class="blog-cardblock h-100">

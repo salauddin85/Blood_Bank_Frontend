@@ -7,19 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const profileUrl = 'https://blood-bank-backend-c7w8.onrender.com/accounts/profile/';
+    // const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
 
     const fetchProfileData = () => {
         fetch(profileUrl, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Token ${token}`,
-                'Content-Type': 'application/json'
-            }
+            method: 'GET'
+            
         })
         .then(response => {
             if (!response.ok) {
                 if (response.status === 401) {
-                    window.location.href = "/login"; 
+                    // window.location.href = "/login"; 
                 }
                 throw new Error('Failed to fetch profile data');
             }
@@ -27,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(profileData => {
             const profile = profileData[0]; 
-            console.log(profile)
+            console.log(profile,"asdfaldsk")
             profileId = profile.id; // Assign profile ID
             console.log(profileId, "id"); // Log the ID after it's assigned
 
@@ -66,43 +64,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // -------------------------------------------------
 // Update Profile
-document.getElementById('updateProfileForm').addEventListener('submit', function (event) {
-  event.preventDefault(); // Default form submission বন্ধ করুন
+// document.getElementById('updateProfileForm').addEventListener('submit', function (event) {
+//   event.preventDefault(); // Default form submission বন্ধ করুন
 
-  // ডেটা অবজেক্ট তৈরি করুন
-  const data = {
-      'first_name': document.getElementById('first_name').value,
-      'last_name': document.getElementById('last_name').value,
-      'age': document.getElementById('age').value,
-      'mobaile_no': document.getElementById('mobaile_no').value,
-      'address': document.getElementById('address').value,
-      'blood_group': document.getElementById('blood_group').value
-  };
+//   // ডেটা অবজেক্ট তৈরি করুন
+//   const data = {
+//       'first_name': document.getElementById('first_name').value,
+//       'last_name': document.getElementById('last_name').value,
+//       'age': document.getElementById('age').value,
+//       'mobaile_no': document.getElementById('mobaile_no').value,
+//       'address': document.getElementById('address').value,
+//       'blood_group': document.getElementById('blood_group').value
+//   };
 
-  // ছবির ফাইল নেওয়া
-  const imageFile = document.getElementById('profileImage').files[0];
   
-  // FormData ব্যবহার করুন
-  const formData = new FormData();
-  Object.keys(data).forEach(key => formData.append(key, data[key])); // অন্য ডেটা যোগ করুন
-  if (imageFile) {
-      formData.append('image', imageFile); // ছবির ফাইল যোগ করুন
-  }
 
-  sendData(formData); // ডেটা পাঠান
-});
+// console.log(data)
+//   // ছবির ফাইল নেওয়া
+//   const imageFile = document.getElementById('profileImage').files[0];
+//   // FormData ব্যবহার করুন
+//   console.log('No image file selected.'); 
+//   const formData = new FormData();
+//   console.log(formData)
+//   Object.keys(data).forEach(key => formData.append(key, data[key])); // অন্য ডেটা যোগ করুন
+//   if (imageFile) {
+//     console.log('Selected image file:', imageFile);
+//       formData.append('image', imageFile); // ছবির ফাইল যোগ করুন
+//   }
+//   else {
+//     console.log('No image file selected.');
+// }
+//   // লগিং ডেটা
+//   console.log('Form Data:', [...formData.entries()]); // FormData টির কন্টেন্ট লগ করুন
+
+//   sendData(formData); // ডেটা পাঠান
+// });
+
+
+
+const UpdateprofileForms =(event)=>{
+  event.preventDefault()
+
+  const updateProfileForm=document.getElementById("updateProfileForm")
+  const data= new FormData (updateProfileForm)
+  const formdata={
+    "first_name":data.get("first_name"),
+    "last_name":data.get("last_name"),
+    "email":data.get("email"),
+    "age":data.get("age"),
+    "mobaile_no":data.get("mobaile_no"),
+    "address":data.get("address"),
+    "image":data.get("image"),
+    "blood_group":data.get("blood_group")
+  }
+  console.log(formdata)
+  sendData(formdata)
+}
 
 // ডেটা পাঠানোর ফাংশন
 function sendData(data) {
+  console.log("json data for submit",data)
   const token = localStorage.getItem("authToken"); // টোকেন নিন
+  console.log(token,"token")
   // প্রোফাইল আইডি এখানে দিন
+  if (!token) {
+    alert("You are not an authenticated user.Please Login");
 
-  fetch(`https://blood-bank-backend-c7w8.onrender.com/accounts/profile/${profileId}`, {
-      method: 'PATCH', // অথবা PUT ব্যবহার করুন
-      body: data, // FormData হিসেবে ডেটা পাঠান
+    return;
+  }
+  fetch(`https://blood-bank-backend-c7w8.onrender.com/accounts/profile/${profileId}/`, {
+      method: 'PUT', // অথবা PUT ব্যবহার করুন
+      body: JSON.stringify(data), // FormData হিসেবে ডেটা পাঠান
       headers: {
-          'Authorization': `Token ${token}` // টোকেন হেডারে যোগ করুন
+        'Content-Type': 'application/json',
+        Authorization: `Token ${token}`
+        
       }
+        
+      
   })
   .then(response => {
       if (!response.ok) {
@@ -131,11 +170,8 @@ let donationData = []; // Global variable to hold the fetched donation history d
 
 function fetchDonationHistory() {
   fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-history/", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${localStorage.getItem("authToken")}`, // Include your auth token here
-    },
+    method: "GET"
+    
   })
     .then((response) => {
       if (!response.ok) {

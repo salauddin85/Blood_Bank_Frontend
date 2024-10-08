@@ -29,40 +29,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body fw-bold">
-                <form id="blogForm">
+                <form id="blogForm" onsubmit="submitBlog(event)">
                     <div class="mb-3">
-                        <label for="blogTitle" class="form-label">Title*</label>
-                        <input type="text" class="form-control rounded-0 border-danger" id="blogTitle" placeholder="Enter blog title" required>
+                        <label for="title" class="form-label">Title*</label>
+                        <input type="text" class="form-control rounded-0 border-danger" id="title" name="title" placeholder="Enter blog title" required>
                     </div>
                     <div class="mb-3">
-                        <label for="blogContent" class="form-label">Content*</label>
-                        <textarea class="form-control rounded-0 border-danger" id="blogContent" rows="3" placeholder="Enter blog content" required></textarea>
+                        <label for="content" class="form-label">Content*</label>
+                        <textarea class="form-control rounded-0 border-danger" id="content" name="content" rows="3" placeholder="Enter blog content" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="blogImage" class="form-label">Upload Image*</label>
-                        <input type="file" class="form-control rounded-0 border-danger" id="blogImage" accept="image/*" required>
+                        <label for="image" class="form-label">Upload Image*</label>
+                        <input type="file" class="form-control rounded-0 border-danger" id="image" name="image" accept="image/*" required>
                     </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary px-2 rounded-0" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-danger px-3 rounded-0">Submit</button>
+                  </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary px-2 rounded-0" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger px-3 rounded-0" onclick="submitBlog()">Submit</button>
-            </div>
+            
         </div>
     </div>
 </div>
 
-    <!-- Blog Section -->
-    <!-- <div id="blog-container" class="container mt-5">
-        <h2 class="text-center mb-4">Our Latest Blogs</h2>
-
-        <div id="posts-container" class="row g-4"></div>
-
-        <div class="d-flex justify-content-between mt-4">
-            <button id="prev-btn" class="btn btn-secondary" style="display:none;">Previous</button>
-            <button id="next-btn" class="btn btn-secondary" style="display:none;">Next</button>
-        </div>
-    </div> -->
+    
 
     <!-- Blog section 2 -->
     <section class="blog-section" style="background-color:#e34334ba">
@@ -104,7 +95,22 @@
           
       </section>
       
+
+
+
+
+
+
+      <!-- Try image upload -->
+      <!-- <form id="image-upload-form" enctype="multipart/form-data">
+        <label for="imageInput">Upload Image:</label>
+        <input type="file" id="imageInput" name="image" accept="image/*" required>
+        <button type="submit">Upload</button>
+      </form> -->
       
+      <div id="uploaded-image">
+        <!-- Uploaded image will be displayed here -->
+      </div>
       
     <!-- Footer -->
     <div id="footer"></div>

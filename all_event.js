@@ -27,7 +27,7 @@
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Token ${token}`
+                    // "Authorization": `Token ${token}`
                 }
             })
             .then(res => {
@@ -105,7 +105,7 @@
 function AcceptDonation(eventId) {
     console.log("Accepted Donation for Event ID:", eventId);
     console.log("Token:", localStorage.getItem("authToken"));
-  
+    const token = localStorage.getItem("authToken"); // Token niye asha
     const encodedEventId = encodeURIComponent(eventId);
     console.log("Encoded Event ID:", encodedEventId);
   
@@ -113,8 +113,8 @@ function AcceptDonation(eventId) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("authToken")}`,
-      },
+        Authorization: `Token ${token}`,
+    },
       body: JSON.stringify({
         eventId: encodedEventId, // যদি backend এ এই data দরকার হয়
       }),
