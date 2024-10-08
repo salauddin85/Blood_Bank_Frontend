@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const fetchProfileData = () => {
         fetch(profileUrl, {
-            method: 'GET'
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+            },
             
         })
         .then(response => {
@@ -169,8 +173,14 @@ function sendData(data) {
 let donationData = []; // Global variable to hold the fetched donation history data
 
 function fetchDonationHistory() {
+  const token = localStorage.getItem("authToken"); // টোকেন নিন
+
   fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-history/", {
-    method: "GET"
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+    },
     
   })
     .then((response) => {

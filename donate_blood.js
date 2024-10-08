@@ -472,10 +472,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch data from your API
   fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/recipient_requests/", {
     method: "GET",
-    // headers: {
-    //   "Content-Type": "application/json",
-    //   // Authorization: `Token ${token}`, // Ensure the token is correctly formatted
-    // },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+    },
   })
     .then((res) => {
       if (!res.ok) {
