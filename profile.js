@@ -138,12 +138,13 @@ function sendData(data) {
   }
   fetch(`https://blood-bank-backend-c7w8.onrender.com/accounts/profile/${profileId}/`, {
       method: 'PUT', // অথবা PUT ব্যবহার করুন
-      body: JSON.stringify(data), // FormData হিসেবে ডেটা পাঠান
+      // FormData হিসেবে ডেটা পাঠান
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Token ${token}`
         
-      }
+      },
+      body: JSON.stringify(data),
         
       
   })
