@@ -34,7 +34,7 @@ fetch("footer.html")
     console.log(formData);
   
     // Correct fetch syntax and added body for sending form data
-    fetch("http://127.0.0.1:8000/blood_bank_releted/subscriptions/", {
+    fetch("https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/subscriptions/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
