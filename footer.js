@@ -14,51 +14,58 @@ fetch("footer.html")
   });
  
 
-
   const subscribeForm = (event) => {
     event.preventDefault();
   
-    const token = localStorage.getItem("authToken"); // Corrected localStorage method
+    const token = localStorage.getItem("authToken"); // Get token from localStorage
     const SubscribeForm = document.getElementById("SubscribeForm");
     const form = new FormData(SubscribeForm);
-   console.log(token)
-   if (!token) {
-    alert("You must be logged in to subscribe.");
-    return;
-  }
   
-    // Correct formData creation
+    // Check if the user is logged in
+    if (!token) {
+      alert("You must be logged in to subscribe.");
+      return;
+    }
+  
+    // Form data
     const formData = {
       email: form.get("email"), // FormData from the form
     };
-    console.log(formData);
   
-    // Correct fetch syntax and added body for sending form data
+    // Fetch request
     fetch("https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/subscriptions/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+        Authorization: `Token ${token}`, // Correctly formatted token
       },
-      body: JSON.stringify(formData), // Send the form data in the request body
+      body: JSON.stringify(formData), // Convert formData to JSON
     })
       .then((res) => {
         if (!res.ok) {
-          // Check if response is not okay (status 2xx)
+          // If response is not ok, get the error message
           return res.json().then((data) => {
-            const errorMessage = data.error;
-            alert(errorMessage); // Alert the user with the error message
-            throw new Error(errorMessage); // Throw an error to be caught in catch block
+            let errorMessage = "Something went wrong.";
+            
+            // Show error details from backend
+            if (data.detail) {
+              errorMessage = data.detail;  // Show detailed error message
+            } else if (data.email) {
+              errorMessage = data.email.join(" "); // Handle email specific errors
+            }
+            
+            alert(errorMessage); // Show alert with error
+            throw new Error(errorMessage); // Throw error for catch block
           });
         }
-        return res.json(); // Return the parsed JSON if response is okay
+        return res.json(); // If successful, return response as JSON
       })
       .then((data) => {
-        console.log("set data", data);
-        alert("Thank you for subscribing!");
+        console.log("Subscription success", data);
+        alert("Thank you for subscribing!"); // Show success message
       })
       .catch((err) => {
-        console.error("Error:", err);
+        console.error("Error:", err); // Catch and log the error
       });
   };
   
