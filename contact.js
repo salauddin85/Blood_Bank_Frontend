@@ -16,7 +16,7 @@ const contactForm = (event) => {
     const token = localStorage.getItem("authToken");
     
     // Aikhane form data API ba server-e sen
-  fetch("https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/contact/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/contact/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

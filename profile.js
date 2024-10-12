@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    const profileUrl = 'https://blood-bank-backend-c7w8.onrender.com/accounts/profile/';
+    const profileUrl = 'https://blood-bank-deploy-vercel.vercel.app/accounts/profile/';
     // const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
 
     const fetchProfileData = () => {
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(profileData => {
             const profile = profileData[0]; 
+            const img_url = profile.image.replace("image/upload/", "");
+
             console.log(profile,"asdfaldsk")
             profileId = profile.id; // Assign profile ID
             console.log(profileId, "id"); // Log the ID after it's assigned
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('profileBloodGroup').textContent = profile.blood_group || 'N/A';
             document.getElementById('availabilityStatus').textContent = profile.is_available ? 'Yes' : 'No';
             document.getElementById('healthStatus').textContent = profile.health_screening_passed ? 'Yes' : 'No';
-            document.getElementById('profileImage').src = profile.image || 'default-image.jpg'; // Default image
+            document.getElementById('profileImage').src = img_url || 'default-image.jpg'; // Default image
 
             // At this point, profileId has been assigned
             // You can now use profileId in subsequent operations
@@ -67,104 +69,105 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // -------------------------------------------------
-// Update Profile
-// document.getElementById('updateProfileForm').addEventListener('submit', function (event) {
-//   event.preventDefault(); // Default form submission বন্ধ করুন
+const uploadPreset = 'image_upload_cildank'; // তোমার তৈরি করা upload preset এর নাম
 
-//   // ডেটা অবজেক্ট তৈরি করুন
-//   const data = {
-//       'first_name': document.getElementById('first_name').value,
-//       'last_name': document.getElementById('last_name').value,
-//       'age': document.getElementById('age').value,
-//       'mobaile_no': document.getElementById('mobaile_no').value,
-//       'address': document.getElementById('address').value,
-//       'blood_group': document.getElementById('blood_group').value
-//   };
+const UpdateprofileForms = async (event) => {
+  event.preventDefault();
 
-  
+  const imageInput = document.getElementById("image");
+  const imageFile = imageInput.files[0]; // Get the selected file
+  console.log(imageFile); // Check if the file is correct
 
-// console.log(data)
-//   // ছবির ফাইল নেওয়া
-//   const imageFile = document.getElementById('profileImage').files[0];
-//   // FormData ব্যবহার করুন
-//   console.log('No image file selected.'); 
-//   const formData = new FormData();
-//   console.log(formData)
-//   Object.keys(data).forEach(key => formData.append(key, data[key])); // অন্য ডেটা যোগ করুন
-//   if (imageFile) {
-//     console.log('Selected image file:', imageFile);
-//       formData.append('image', imageFile); // ছবির ফাইল যোগ করুন
-//   }
-//   else {
-//     console.log('No image file selected.');
-// }
-//   // লগিং ডেটা
-//   console.log('Form Data:', [...formData.entries()]); // FormData টির কন্টেন্ট লগ করুন
+  let imageUrl = null; // Variable to hold the uploaded image URL
 
-//   sendData(formData); // ডেটা পাঠান
-// });
+  if (imageFile) {
+    // Cloudinary এ ইমেজ আপলোড
+    const cloudinaryFormData = new FormData();
+    cloudinaryFormData.append('file', imageFile); // Add file
+    cloudinaryFormData.append('upload_preset', uploadPreset); // Add upload_preset
 
+    try {
+      const cloudinaryResponse = await fetch(`https://api.cloudinary.com/v1_1/dnzqmx8nw/image/upload`, {
+        method: "POST",
+        body: cloudinaryFormData,
+      });
 
+      const cloudinaryData = await cloudinaryResponse.json(); // Wait for cloudinary response
+      console.log(cloudinaryData, "cloudinary data");
 
-const UpdateprofileForms =(event)=>{
-  event.preventDefault()
+      if (!cloudinaryResponse.ok) {
+        throw new Error("Image upload failed.");
+      }
 
-  const updateProfileForm=document.getElementById("updateProfileForm")
-  const data= new FormData (updateProfileForm)
-  const formdata={
-    "first_name":data.get("first_name"),
-    "last_name":data.get("last_name"),
-    "email":data.get("email"),
-    "age":data.get("age"),
-    "mobaile_no":data.get("mobaile_no"),
-    "address":data.get("address"),
-    "image":data.get("image"),
-    "blood_group":data.get("blood_group")
+      imageUrl = cloudinaryData.secure_url; // Get the secure image URL from cloudinary
+    } catch (error) {
+      console.error('Error during image upload:', error);
+      alert("An error occurred during the image upload.");
+      return; // Stop execution if the upload fails
+    }
   }
-  console.log(formdata)
-  sendData(formdata)
-}
 
-// ডেটা পাঠানোর ফাংশন
-function sendData(data) {
-  console.log("json data for submit",data)
-  const token = localStorage.getItem("authToken"); // টোকেন নিন
-  console.log(token,"token")
-  // প্রোফাইল আইডি এখানে দিন
+  const updateProfileForm = document.getElementById("updateProfileForm");
+  const data = new FormData(updateProfileForm);
+  
+  // Create the formdata object only with fields that have values
+  const formdata = {};
+  if (data.get("first_name")) formdata.first_name = data.get("first_name");
+  if (data.get("last_name")) formdata.last_name = data.get("last_name");
+  if (data.get("email")) formdata.email = data.get("email");
+  if (data.get("age")) formdata.age = data.get("age");
+  if (data.get("mobaile_no")) formdata.mobaile_no = data.get("mobaile_no");
+  if (data.get("address")) formdata.address = data.get("address");
+  if (imageUrl) formdata.image = imageUrl; // Include image URL if available
+  if (data.get("blood_group")) formdata.blood_group = data.get("blood_group");
+
+  console.log(formdata);
+
+  // Determine the number of fields that have values
+  const updatedFieldsCount = Object.keys(formdata).length;
+
+  // Decide whether to send a PUT or PATCH request
+  const requestMethod = updatedFieldsCount > 7 ? 'PUT' : 'PATCH';
+
+  // Data পাঠানোর জন্য sendData ফাংশন কল করা
+  await sendData(formdata, requestMethod);
+};
+
+// Data sending function
+async function sendData(data, method) {
+  const token = localStorage.getItem("authToken"); // Token retrieval
   if (!token) {
-    alert("You are not an authenticated user.Please Login");
-
+    alert("You are not an authenticated user. Please Login");
     return;
   }
-  fetch(`https://blood-bank-backend-c7w8.onrender.com/accounts/profile/${profileId}/`, {
-      method: 'PUT', // অথবা PUT ব্যবহার করুন
-      // FormData হিসেবে ডেটা পাঠান
+
+  // Assuming profileId is available in your scope
+  try {
+    const response = await fetch(`https://blood-bank-deploy-vercel.vercel.app/accounts/profile/${profileId}/`, {
+      method: method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token ${token}`
-        
+        'Authorization': `Token ${token}`
       },
       body: JSON.stringify(data),
-        
-      
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Failed to update profile'); // ত্রুটি হ্যান্ডল করুন
-      }
-      return response.json(); // JSON হিসেবে উত্তর পড়ুন
-  })
-  .then(data => {
-      console.log('Success:', data);
-      // সফল হলে মডাল বন্ধ করুন
-      var modal = bootstrap.Modal.getInstance(document.getElementById('updateProfileModal'));
-      modal.hide();
-  })
-  .catch(error => {
-      console.error('Error:', error);
-      alert('An error occurred while updating the profile. Please try again.'); // ব্যবহারকারীর জন্য ত্রুটি বার্তা দেখান
-  });
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update profile');
+    }
+
+    const responseData = await response.json();
+    console.log('Success:', responseData);
+    // Optionally close the modal or perform other actions on success
+    var modal = bootstrap.Modal.getInstance(document.getElementById('updateProfileModal'));
+    modal.hide();
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while updating the profile. Please try again.'); // Show error message to the user
+  }
 }
+
+
 
 
 
@@ -176,7 +179,7 @@ let donationData = []; // Global variable to hold the fetched donation history d
 function fetchDonationHistory() {
   const token = localStorage.getItem("authToken"); // টোকেন নিন
 
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-history/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/donation-history/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -296,15 +299,6 @@ window.onload = fetchDonationHistory;
 
 
 
-
-
-
-
-
-
-
-
-
 // Feedback
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -315,7 +309,7 @@ async function fetchFeedback() {
   const token = localStorage.getItem("authToken");
 
   try {
-      const response = await fetch('https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/', {
+      const response = await fetch('https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/feedback/', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -359,7 +353,7 @@ async function openUpdateModal(feedbackId) {
   const token = localStorage.getItem("authToken");
 
   try {
-      const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
+      const response = await fetch(`https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/feedback/${feedbackId}/`, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -397,7 +391,7 @@ document.getElementById('submitFeedbackBtn').addEventListener('click', async () 
   };
 
   try {
-      const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
+      const response = await fetch(`https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/feedback/${feedbackId}/`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json',
@@ -424,7 +418,7 @@ async function deleteFeedback(feedbackId) {
 
   if (confirm('Are you sure you want to delete this feedback?')) {
       try {
-          const response = await fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/${feedbackId}/`, {
+          const response = await fetch(`https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/feedback/${feedbackId}/`, {
               method: 'DELETE',
               headers: {
                   'Content-Type': 'application/json',

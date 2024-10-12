@@ -60,7 +60,7 @@ const notificationForm = (event) => {
   }
 
   // Send a POST request with blood group and location
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/notifications/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -109,7 +109,7 @@ const notificationShow = () => {
   // }
 
   // Fetch the notifications
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/notifications/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/notifications/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -191,7 +191,7 @@ const EventForm = (event) => {
   }
 
   // Send a POST request with blood group and location
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-events/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/donation-events/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if the token is present
 
   // Fetch data from your API
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/dashboard/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -310,7 +310,7 @@ function AcceptDonation(eventId) {
 
     return;
   }
-  fetch(`https://blood-bank-backend-c7w8.onrender.com/events/acceptdonation/${encodedEventId}/`, {
+  fetch(`https://blood-bank-deploy-vercel.vercel.app/events/acceptdonation/${encodedEventId}/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -349,7 +349,7 @@ let donationData = [];
 
 // Function to fetch donation history from the API
 function fetchDonationHistory() {
-    fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/", {
+    fetch("https://blood-bank-deploy-vercel.vercel.app/events/dashboard/donation_history/", {
         method: "GET"
         // headers: {
         //     "Content-Type": "application/json",
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("authToken");
 
   // Fetch data from your API
-  fetch("https://blood-bank-backend-c7w8.onrender.com/events/dashboard/recipient_requests/", {
+  fetch("https://blood-bank-deploy-vercel.vercel.app/events/dashboard/recipient_requests/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -552,7 +552,7 @@ async function handleFeedbackSubmit(event) {
   };
   console.log(data)
   try {
-      const response = await fetch("https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/feedback/", {
+      const response = await fetch("https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/feedback/", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",

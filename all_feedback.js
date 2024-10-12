@@ -2,7 +2,7 @@ let currentPage = 1;
 const itemsPerPage = 4;
 
 function fetchFeedback(page) {
-    fetch(`https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/all_feedback/?page=${page}`)
+    fetch(`https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/all_feedback/?page=${page}`)
         .then(response => response.json())
         .then(data => {
             displayFeedback(data.results);

@@ -1,24 +1,9 @@
-fetch("footer.html")
-  .then((res) => {
-    if (!res.ok) {
-      throw new Error('Network response was not ok ' + res.statusText);
-    }
-    return res.text();
-  })
-  .then((data) => {
-    // console.log(data)
-    document.getElementById("footer").innerHTML = data;
-  })
-  .catch((error) => {
-    console.error('Error loading navbar:', error);
-  });
- 
 
-  const subscribeForm = (event) => {
+const aboutsubscribeForm = (event) => {
     event.preventDefault();
   
     const token = localStorage.getItem("authToken"); // Get token from localStorage
-    const SubscribeForm = document.getElementById("SubscribeForm");
+    const SubscribeForm = document.getElementById("aboutsubscribeForm");
     const form = new FormData(SubscribeForm);
   
     // Check if the user is logged in
@@ -31,7 +16,7 @@ fetch("footer.html")
     const formData = {
       email: form.get("email"), // FormData from the form
     };
-  
+    console.log(formData)
     // Fetch request
     fetch("https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/subscriptions/", {
       method: "POST",

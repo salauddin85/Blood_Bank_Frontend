@@ -7,7 +7,7 @@ const notificationShows = (page = 1) => {
 
   const token = localStorage.getItem("authToken");
 
-  fetch(`https://blood-bank-backend-c7w8.onrender.com/events/notifications/?page=${page}`, {
+  fetch(`https://blood-bank-deploy-vercel.vercel.app/events/notifications/?page=${page}`, {
     method: "GET",
     // headers: {
     //   "Content-Type": "application/json",

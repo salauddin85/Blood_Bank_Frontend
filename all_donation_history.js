@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/events/dashboard/donation_history/'; // Replace with your actual API endpoint
+    const apiUrl = 'https://blood-bank-deploy-vercel.vercel.app/events/dashboard/donation_history/'; // Replace with your actual API endpoint
     const container = document.getElementById('donationHistoryContainer'); // Corrected ID here
   
     fetch(apiUrl)

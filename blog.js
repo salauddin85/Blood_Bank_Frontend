@@ -9,48 +9,88 @@ document
     blogModal.show();
   });
 
-  const submitBlog = (event) => {
-    event.preventDefault(); // Form default submit prevent
-    const blogForm = document.getElementById("blogForm");
 
-    const token = localStorage.getItem("authToken"); // Token niye asha
-    const formData = new FormData(blogForm); // Form data niye asha (title, content, image)
-    console.log(formData)
-    console.log(token)
-    if (!token) {
-      alert("You are not an authenticated user.Please Login");
-  
-      return;
-    }
-  
-    // fetch API call
-    fetch('https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/', {
-        method: 'POST',
-        headers: {
-            Authorization: `Token ${token}`,  // Token header
-        },
-        body: formData  // FormData ke body hisebe pathano
-    })
-    .then(response => {
-        console.log(response);
-        if (response.ok) {
-            alert('Blog added successfully!');
-            document.getElementById('blogForm').reset(); // Form reset
-            const modal = bootstrap.Modal.getInstance(document.getElementById('addBlogModal'));
-            modal.hide(); // Close modal after success
-        } else {
-            return response.json().then(data => {
-                console.error('Failed to add blog:', data);
-                alert('Failed to add blog.');
-            });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error occurred while adding the blog.');
-    });
-};
 
+// -------------------------------------------------------------------------------------
+
+  const uploadPreset = 'image_upload_cildank'; // তোমার তৈরি করা upload preset এর নাম
+
+  const submitBlog = async (event) => {
+      event.preventDefault(); // Form default submit prevent
+  
+      const imageInput = document.getElementById("image");
+      const imageFile = imageInput.files[0]; // Get the selected file
+      console.log(imageFile); // Check if the file is correct
+  
+      if (!imageFile) {
+          alert("Please select an image file.");
+          return;
+      }
+  
+      // Cloudinary এ ইমেজ আপলোড
+      const cloudinaryFormData = new FormData();
+      cloudinaryFormData.append('file', imageFile); // Add file
+      cloudinaryFormData.append('upload_preset', uploadPreset); // Add upload_preset
+  
+      try {
+          const cloudinaryResponse = await fetch(`https://api.cloudinary.com/v1_1/dnzqmx8nw/image/upload`, {
+              method: "POST",
+              body: cloudinaryFormData,
+          });
+  
+          const cloudinaryData = await cloudinaryResponse.json();
+          console.log(cloudinaryData,"cloudinary data ")
+  
+          if (cloudinaryResponse.ok) {
+              // ইমেজ URL পাওয়া
+              const imageUrl = cloudinaryData.secure_url;
+              console.log(imageUrl)
+  
+              const formData = new FormData(document.getElementById("blogForm"));
+              const data = {
+                  title: formData.get("title"),   // সঠিক ফিল্ড নাম ব্যবহার করা
+                  image: imageUrl,
+                  content: formData.get("content"), // সঠিক ফিল্ড নাম ব্যবহার করা
+                 
+              };
+              console.log(data,"data blog")
+              const token = localStorage.getItem("authToken");
+              console.log(token);
+              if (!token) {
+                  alert("You are not an authenticated user. Please Login");
+                  return;
+              }
+  
+              // fetch API call
+              const response = await fetch('https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/blog/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: `Token ${token}`,  // Token header
+                  },
+                  body: JSON.stringify(data),  // FormData কে body হিসেবে পাঠানো
+              });
+  
+              if (response.ok) {
+                  alert('Blog added successfully!');
+                  document.getElementById('blogForm').reset(); // Form reset
+                  const modal = bootstrap.Modal.getInstance(document.getElementById('addBlogModal'));
+                  modal.hide(); // Close modal after success
+              } else {
+                  const errorData = await response.json();
+                  console.error('Failed to add blog:', errorData);
+                  alert('Failed to add blog.');
+              }
+          } else {
+              alert("Image upload failed: " + cloudinaryData.error.message); // Show error if image upload fails
+          }
+      } 
+      catch (error) {
+          console.error('Error:', error);
+          alert('Error occurred while adding the blog.');
+      }
+  };
+  
 
 
 
@@ -58,7 +98,7 @@ document
 // ---------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
-    const apiUrl = 'https://blood-bank-backend-c7w8.onrender.com/blood_bank_releted/blog/';
+    const apiUrl = 'https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/blog/';
     const blogContainer = document.getElementById('blog-container');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
@@ -83,12 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayBlogs(blogs) {
       blogContainer.innerHTML = ''; // Clear the container before rendering
       blogs.forEach(blog => {
+        // image/upload/https://res.cloudinary.com/dnzqmx8nw/image/upload/v1728733528/l6hju40fmxwiavhjpm53.jpg
+        const img_url = blog.image.replace("image/upload/", "");
+        console.log(img_url)
+        console.log(blog)
         console.log(blog.image,"adslfalk")
         const blogCard = `
           <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
             <div class="blog-cardblock h-100">
               <div class="blog-cardbody text-center">
-                <img src="${blog.image}" class="blog-imageimg img-fluid" alt="${blog.title}">
+                <img src="${img_url}" class="blog-imageimg img-fluid" alt="${blog.title}">
                 <div class="blog-textblock mt-3">
                   <h5 class="blog-cardhead">Author:${blog.author}</h5>
 
@@ -147,43 +191,3 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
 
-
-
-// const imageUploadimbb=(image)=>{
-
-// }
-
-//   // try image upload
-//   document.getElementById('image-upload-form').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent form from submitting the traditional way
-  
-//     const imageInput = document.getElementById('imageInput').files[0];
-//     const formData = new FormData();
-//     const apiKey = 'ca0a7f8e97446e4139d17010b039c2da'; // ImageBB theke API key niye ekhane bosan
-//     formData.append('image', imageInput);
-  
-//     // Fetch request to upload image
-//     fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-//       method: 'POST',
-//       body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.success) {
-//         const imageUrl = data.data.url; // Uploaded image URL
-//         displayImage(imageUrl); // Show the image on the page
-//       } else {
-//         console.error('Image upload failed:', data.error);
-//       }
-//     })
-//     .catch(error => {
-//       console.error('Error uploading image:', error);
-//     });
-//   });
-  
-//   // Function to display the uploaded image
-//   function displayImage(url) {
-//     const uploadedImageDiv = document.getElementById('uploaded-image');
-//     uploadedImageDiv.innerHTML = `<img src="${url}" alt="Uploaded Image" class="img-fluid">`;
-//   }
-  

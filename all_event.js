@@ -6,7 +6,7 @@
         const notFoundMessage = document.getElementById("not-found-message");
         const refreshButton = document.getElementById("refresh");
         const token = localStorage.getItem("authToken");
-        const defaultUrl = "https://blood-bank-backend-c7w8.onrender.com/events/dashboard/";
+        const defaultUrl = "https://blood-bank-deploy-vercel.vercel.app/events/dashboard/";
         let selectedBloodGroup = '';  // Variable to store selected blood group
 
         // Function to fetch events based on blood group and event name
@@ -15,12 +15,12 @@
 
             // If blood group is selected, use it in the URL
             if (selectedBloodGroup) {
-                url = "https://blood-bank-backend-c7w8.onrender.com/events/donation-event-filter/?blood_group=" + encodeURIComponent(selectedBloodGroup);
+                url = "https://blood-bank-deploy-vercel.vercel.app/events/donation-event-filter/?blood_group=" + encodeURIComponent(selectedBloodGroup);
             }
 
             // If there is an event name, use the search URL
             if (eventName) {
-                url = "https://blood-bank-backend-c7w8.onrender.com/events/donation-event-filter/?event_name=" + encodeURIComponent(eventName);
+                url = "https://blood-bank-deploy-vercel.vercel.app/events/donation-event-filter/?event_name=" + encodeURIComponent(eventName);
             }
 
             fetch(url, {
@@ -109,7 +109,7 @@ function AcceptDonation(eventId) {
     const encodedEventId = encodeURIComponent(eventId);
     console.log("Encoded Event ID:", encodedEventId);
   
-    fetch(`https://blood-bank-backend-c7w8.onrender.com/events/acceptdonation/${encodedEventId}/`, {
+    fetch(`https://blood-bank-deploy-vercel.vercel.app/events/acceptdonation/${encodedEventId}/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -85,7 +85,7 @@ const DonationEventForm = (event) => { // Changed Function Name
     }
 
     // Send a POST request with blood group and location
-    fetch("https://blood-bank-backend-c7w8.onrender.com/events/donation-events/", {
+    fetch("https://blood-bank-deploy-vercel.vercel.app/events/donation-events/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
