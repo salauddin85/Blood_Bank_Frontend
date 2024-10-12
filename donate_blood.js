@@ -317,9 +317,7 @@ function AcceptDonation(eventId) {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`,
     },
-    body: JSON.stringify({
-      eventId: encodedEventId, // যদি backend এ এই data দরকার হয়
-    }),
+    
   })
     .then((response) => {
       // If response is not OK, handle the error here itself

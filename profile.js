@@ -4,7 +4,7 @@ let profileId = "";
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem("authToken");
 
-
+   console.log(token)
 
     const profileUrl = 'https://blood-bank-deploy-vercel.vercel.app/accounts/profile/';
     // const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
