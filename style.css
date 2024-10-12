@@ -509,7 +509,7 @@
     margin-bottom: 1.5rem;
     /* color: white; */
     font-weight: bold;
- 
+    height: 100%;
     flex-basis: 20%; /* 4 cards in one row for large screens */
 }
 
