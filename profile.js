@@ -3,9 +3,6 @@ let profileId = "";
 
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem("authToken");
-
-
-
     const profileUrl = 'https://blood-bank-deploy-vercel.vercel.app/accounts/profile/';
     // const profileUrl = 'http://127.0.0.1:8000/accounts/profile/';
 
@@ -13,14 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(profileUrl, {
             method: 'GET',
             headers: {
-              "Content-Type": "application/json",
-              Authorization: `Token ${token}`, // Ensure the token is correctly formatted
+                "Content-Type": "application/json",
+                Authorization: `Token ${token}`,
             },
-            
         })
         .then(response => {
             if (!response.ok) {
                 if (response.status === 401) {
+                    // Uncomment this if you want to redirect to login on unauthorized access
                     // window.location.href = "/login"; 
                 }
                 throw new Error('Failed to fetch profile data');
@@ -29,14 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(profileData => {
             const profile = profileData[0]; 
-            const img_url = profile.image.replace("image/upload/", "");
+            const img_url = profile.image ? profile.image.replace("image/upload/", "") : null; // Check for existing image
 
-            console.log(profile,"asdfaldsk")
             profileId = profile.id; // Assign profile ID
-            console.log(profileId, "id"); // Log the ID after it's assigned
 
             fullname = `${profile.first_name || 'Unknown'} ${profile.last_name || 'Unknown'}`.trim();
-            console.log(fullname); // Log full name for debugging
 
             // Update the DOM with profile information
             document.getElementById('profileName').textContent = fullname;
@@ -50,11 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('profileBloodGroup').textContent = profile.blood_group || 'N/A';
             document.getElementById('availabilityStatus').textContent = profile.is_available ? 'Yes' : 'No';
             document.getElementById('healthStatus').textContent = profile.health_screening_passed ? 'Yes' : 'No';
-            document.getElementById('profileImage').src = img_url || 'default-image.jpg'; // Default image
+            
+            // Check if img_url exists before assigning to the image source
+            if (img_url) {
+                document.getElementById('profileImage').src = img_url; // Use existing image if available
+            } else {
+                document.getElementById('profileImage').src = 'default-image.jpg'; // Use default image
+            }
 
-            // At this point, profileId has been assigned
-            // You can now use profileId in subsequent operations
-            performAdditionalOperations(profileId); // Example of using profileId
+            performAdditionalOperations(profileId);
         })
         .catch(error => console.error('Error fetching profile data:', error));
     };
