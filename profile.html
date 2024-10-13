@@ -83,33 +83,33 @@
             </div>
             <div class="modal-body">
                 <form id="updateProfileForm" enctype="multipart/form-data" onsubmit="UpdateprofileForms(event)">
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" >
+                        <input type="text" class="form-control rounded-0" id="first_name" name="first_name" >
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" >
+                        <input type="text" class="form-control rounded-0" id="last_name" name="last_name" >
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control rounded-0" id="email" name="email">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" name="age" >
+                        <input type="number" class="form-control rounded-0" id="age" name="age" >
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="mobaile_no" class="form-label">Mobile No</label>
-                        <input type="text" class="form-control" id="mobaile_no" name="mobaile_no" >
+                        <input type="text" class="form-control rounded-0" id="mobaile_no" name="mobaile_no" >
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" name="address" ></textarea>
+                        <textarea class="form-control rounded-0" id="address" name="address" ></textarea>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="blood_group" class="form-label">Choose Blood Group*</label>
-                        <select class="form-select" id="blood_group" name="blood_group">
+                        <select class="form-select rounded-0" id="blood_group" name="blood_group">
                             <option value="">Blood group</option>
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
@@ -121,9 +121,9 @@
                             <option value="AB-">AB-</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="image" class="form-label">Upload Image</label>
-                        <input type="file" class="form-control" id="image" accept="image/*" name="image">
+                        <input type="file" class="form-control rounded-0" id="image" accept="image/*" name="image">
                     </div>
                     <button type="submit" class="btn btn-danger">Update</button>
                 </form>
@@ -144,19 +144,19 @@
         </div>
         <div class="modal-body">
           <form id="changePasswordForm">
-            <div class="mb-3">
-              <label for="oldPassword" class="form-label">Old Password</label>
-              <input type="password" class="form-control" id="oldPassword" required>
+            <div class="mb-2">
+              <label for="oldPassword" class="form-label">Old Password*</label>
+              <input type="password" class="form-control rounded-0" id="oldPassword" required>
             </div>
-            <div class="mb-3">
-              <label for="newPassword" class="form-label">New Password</label>
-              <input type="password" class="form-control" id="newPassword" required>
+            <div class="mb-2">
+              <label for="newPassword" class="form-label">New Password*</label>
+              <input type="password" class="form-control rounded-0" id="newPassword" required>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="changePassword()">Change Password</button>
+          <button type="button" class="btn btn-primary rounded-0" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger rounded-0" onclick="changePassword()">Change Password</button>
         </div>
       </div>
     </div>

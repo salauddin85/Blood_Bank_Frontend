@@ -141,7 +141,7 @@ const handleLogin = (event) => {
     })
     .then((data) => {
       console.log("set data", data);
-      console.log("user data", data.user_id);
+      localStorage.setItem('userId', data.user_id); // লগ ইন করার পর ইউজার আইডি সংরক্ষণ
       console.log("token data", data.token);
       localStorage.setItem("authToken", data.token);
       alert("Login Successful");
