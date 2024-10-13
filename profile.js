@@ -453,10 +453,10 @@ async function deleteFeedback(feedbackId) {
 
 const changePassword = async () => {
   const userId = localStorage.getItem('userId'); // ইউজার আইডি পাওয়া
-
+  console.log(userId)
   const oldPassword = document.getElementById("oldPassword").value; // Get old password from input
   const newPassword = document.getElementById("newPassword").value; // Get new password from input
-
+  console.log(oldPassword,newPassword)
   const token = localStorage.getItem("authToken"); // Get token from local storage
   if (!token) {
     alert("You are not an authenticated user.Please Login");
