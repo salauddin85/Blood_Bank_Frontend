@@ -449,3 +449,44 @@ async function deleteFeedback(feedbackId) {
 
 // ==============================================
 
+
+
+const changePassword = async () => {
+  const userId = localStorage.getItem('userId'); // ইউজার আইডি পাওয়া
+
+  const oldPassword = document.getElementById("oldPassword").value; // Get old password from input
+  const newPassword = document.getElementById("newPassword").value; // Get new password from input
+
+  const token = localStorage.getItem("authToken"); // Get token from local storage
+  if (!token) {
+    alert("You are not an authenticated user.Please Login");
+
+    return;
+  }
+
+  const response = await fetch('https://blood-bank-deploy-vercel.vercel.app/accounts/change_password/', {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`, // Authorization token
+      },
+      body: JSON.stringify({
+          user_id: userId,
+          old_password: oldPassword,
+          new_password: newPassword,
+      }),
+  });
+
+  const data = await response.json();
+
+  if (response.ok) {
+      alert(data.message); // Show success message
+      // Optionally close the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('changePasswordModal'));
+      modal.hide();
+      document.getElementById('changePasswordForm').reset(); // Reset the form
+  } else {
+      alert(data.error); // Show error message
+  }
+};
+

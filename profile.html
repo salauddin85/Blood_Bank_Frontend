@@ -47,11 +47,15 @@
            
 
             <div class="centered-button-wrapper margin-top-medium">
-                <h6 class="button-text-uppercase">
+                <h6 class="button-text-uppercase profile-password-btn">
                     <button type="button" class="text-decoration-none border-0 padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-white bg-danger" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
                         Update Profile
                     </button>
+                    <button type="button" class=" text-decoration-none border-0 padding-x-large padding-y-medium rounded-button btn-outline-alert text-highlight fw-bold text-white bg-danger" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                        Update Password
+                    </button>
                 </h6>
+                
             </div>
             
 
@@ -127,6 +131,44 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Change password modal-->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="changePasswordForm">
+            <div class="mb-3">
+              <label for="oldPassword" class="form-label">Old Password</label>
+              <input type="password" class="form-control" id="oldPassword" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input type="password" class="form-control" id="newPassword" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="changePassword()">Change Password</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     <section id="history-section" style="background-color:rgba(128, 0, 0, 0.688)">
 

@@ -781,37 +781,60 @@
 /* BLood donation page  */
 
 /* Notification section */
+
 .notification-section {
     background-color: #f8f9fa !important;
-    padding: 20px;
+    padding: 10px;
 }
 
 .notification-item {
     background-color: #f8f9fa;
     border: 2px solid #ddd;
     padding: 20px;
-    margin: 10px;
+    margin: 5px;
+    
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* text-align: center; */
-    padding-left: 50px;
+    padding-left: 20px;
     font-size: 18px;
 }
-
+.blood-request-section-title{
+    color: white;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+}
 /* Responsive styling for notifications */
 @media (min-width: 576px) {
     .notification-item {
         width: calc(100% / 2 - 20px); /* Two columns on small devices */
         display: inline-block;
         vertical-align: top;
+        min-height:50vh;
+        max-height: 50vh;
+
+        gap: 10px;
     }
 }
 
 @media (min-width: 768px) {
     .notification-item {
+        width: calc(100% / 2 - 20px); /* Three columns on medium and larger devices */
+        display: inline-block;
+        vertical-align: top;
+        min-height:350px;
+        max-height: 350px;
+    }
+}
+@media (min-width: 769px) {
+    .notification-item {
         width: calc(100% / 3 - 20px); /* Three columns on medium and larger devices */
         display: inline-block;
         vertical-align: top;
+        min-height: 280px;
+        max-height: 280px;
     }
 }
 /* ----------------------------------------------------- */
@@ -1804,6 +1827,11 @@ h2 {
         /* Makes it circular */
         /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
     }
+    .profile-password-btn{
+        display: flex;
+        gap: 35px;
+        /* justify-content: space-between !important; */
+    }
 }
   
 @media (min-width: 769px) ,(max-width: 1900px) {
@@ -1827,6 +1855,11 @@ h2 {
         /* Makes it circular */
         /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Optional: adds a subtle shadow */
     }
+    .profile-password-btn{
+        display: flex;
+        gap: 70px;
+        /* justify-content: space-between !important; */
+    }
 }
 @media (max-width: 480px) {
     .custom-profile-name {
@@ -1846,6 +1879,11 @@ h2 {
          /* Ensures the image covers the area without distortion */
         border-radius: 50%; /* Makes it circular */
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    }
+    .profile-password-btn{
+        display: flex;
+        gap: 20px;
+        /* justify-content: space-between !important; */
     }
 
     

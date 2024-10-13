@@ -17,7 +17,20 @@ document
 
   const submitBlog = async (event) => {
       event.preventDefault(); // Form default submit prevent
-  
+      
+      const content = document.getElementById("content").value;
+      const title = document.getElementById("title").value;
+      const wordCountcontent = content.trim().split(/\s+/).filter(word => word.length > 0).length;
+      const wordCounttitle = title.trim().split(/\s+/).filter(word => word.length > 0).length;
+      if (wordCounttitle>10){
+        alert("You cannot add title more than 10 words.");
+          return;
+      }
+      else if (wordCountcontent > 32) {
+        alert("You cannot add content more than 32 words.");
+        return;
+      }
+
       const imageInput = document.getElementById("image");
       const imageFile = imageInput.files[0]; // Get the selected file
       console.log(imageFile); // Check if the file is correct
