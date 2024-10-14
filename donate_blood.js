@@ -373,42 +373,47 @@ function fetchDonationHistory() {
 }
 
 // Function to display the donation history in the HTML
+
 function displayDonationHistory() {
-    const container = document.getElementById("donation-history-container");
-    container.innerHTML = ""; // Clear existing content
+  const container = document.getElementById("donation-history-container");
+  container.innerHTML = ""; // Clear existing content
 
-    // Slice to get only the first 6 donation history records
-    const limitedDonations = donationData.slice(0, 6);
+  // Slice to get only the first 6 donation history records
+  const limitedDonations = donationData.slice(0, 6);
 
-    // Loop through the limited donation data and create cards for each item
-    limitedDonations.forEach((item) => {
-        const card = `
-            <div class="col-md-4 mb-4">
-                <div class="card history-card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Event: ${item.event.event_name}</h5>
-                        <p class="card-text">
-                            <strong>Recipient:</strong> ${item.event.recipient}<br>
-                            <strong>Blood Group:</strong> ${item.event.blood_group}<br>
-                            <strong>Date:</strong> ${item.event.date}<br>
-                            <strong>Status:</strong> ${item.event.status}<br>
-                            <strong>Created By:</strong> ${item.event.created_by || "N/A"}<br>
-                            <strong>Active:</strong> ${item.event.is_active ? "Yes" : "No"}
-                        </p>
-                        <hr>
-                        <p class="card-text">
-                            <strong>User:</strong> ${item.user}<br>
-                            <strong>Accepted On:</strong> ${item.accepted_on}<br>
-                            <strong>Donation Count:</strong> ${item.blood_donation_count}<br>
-                            <strong>Canceled:</strong> ${item.is_canceled ? "Yes" : "No"}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML("beforeend", card); // Append the card to the container
-    });
+  // Loop through the limited donation data and create cards for each item
+  limitedDonations.forEach((item) => {
+      // Convert accepted_on to local date and time string
+      const acceptedOnDate = new Date(item.accepted_on).toLocaleString();
+
+      const card = `
+          <div class="col-md-4 mb-4">
+              <div class="card history-card shadow-sm">
+                  <div class="card-body">
+                      <h5 class="card-title">Event: ${item.event.event_name}</h5>
+                      <p class="card-text">
+                          <strong>Recipient:</strong> ${item.event.recipient}<br>
+                          <strong>Blood Group:</strong> ${item.event.blood_group}<br>
+                          <strong>Date:</strong> ${item.event.date}<br>
+                          <strong>Status:</strong> ${item.event.status}<br>
+                          <strong>Created By:</strong> ${item.event.created_by || "N/A"}<br>
+                          <strong>Active:</strong> ${item.event.is_active ? "Yes" : "No"}
+                      </p>
+                      <hr>
+                      <p class="card-text">
+                          <strong>User:</strong> ${item.user}<br>
+                          <strong>Accepted On:</strong> ${acceptedOnDate}<br> <!-- Local time displayed -->
+                          <strong>Donation Count:</strong> ${item.blood_donation_count}<br>
+                          <strong>Canceled:</strong> ${item.is_canceled ? "Yes" : "No"}
+                      </p>
+                  </div>
+              </div>
+          </div>
+      `;
+      container.insertAdjacentHTML("beforeend", card); // Append the card to the container
+  });
 }
+
 
 {/* <button class="btn btn-primary" onclick="downloadPDF(${item.id})">Download Donation History PDF</button> */}
 // Function to handle PDF download

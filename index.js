@@ -188,3 +188,53 @@ fetch(apiUrl)
     })
     .catch(error => console.error('Error fetching donation history:', error));
 });
+
+
+
+
+
+// ----------------------------------------
+// feedback section 
+
+const apiUrl = 'https://blood-bank-deploy-vercel.vercel.app/blood_bank_releted/all_feedback/';
+let feedbackData = [];
+
+function fetchFeedback() {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            feedbackData = data.results.slice(0, 4); // Show only the first 4 feedbacks
+            displayFeedback();
+        })
+        .catch(error => console.error('Error fetching feedback:', error));
+}
+function displayFeedback() {
+  const feedbackSection = document.getElementById('feedbackSection');
+  feedbackSection.innerHTML = ''; // Clear existing feedback
+
+  feedbackData.forEach(feedback => {
+      const createdAt = new Date(feedback.created_at);
+      const formattedDate = createdAt.toLocaleDateString(); // Format date
+      const formattedTime = createdAt.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); // Format time
+
+      const feedbackCard = `
+          <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="custom-user-feedback-large-interactive-card-wrapper-styled-dimension h-100">
+                  <div class="custom-user-feedback-content-layout-with-extra-space">
+                      <h5 class="pt-2">${feedback.donor}</h5>
+                      <h5 class="pt-2">${feedback.feedback}</h5>
+                      <h5 class="pt-2"><strong>Rating:</strong> ${feedback.rating}</h5>
+                      <h5 class="pt-2">
+                          Created on: ${formattedDate} at ${formattedTime}
+                      </h5>
+                  </div>
+              </div>
+          </div>
+      `;
+      feedbackSection.innerHTML += feedbackCard;
+  });
+}
+
+
+// Initial fetch and display
+fetchFeedback();

@@ -26,7 +26,7 @@ document
         alert("You cannot add title more than 10 words.");
           return;
       }
-      else if (wordCountcontent > 32) {
+      else if (wordCountcontent > 40) {
         alert("You cannot add content more than 32 words.");
         return;
       }

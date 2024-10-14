@@ -614,41 +614,42 @@
     margin: 25px 0; /* Space between cards */
 }
 
-/* testimonial section */
+/* Feedback section */
 /* --------------------------------------------------- */
-.testimonials-section {
-    background: linear-gradient(90deg,  #b222229b,#b222229b, #b222229b );
-  }
-  
-  .testimonial {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .quote-icon {
-    color: #6c757d;
-  }
-  
-  .testimonial p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  
-  .testimonial-image img {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .testimonial h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .testimonial p.text-muted {
-    font-size: 0.9rem;
-  }
-  
+
+
+#feedbackSection {
+    margin-left: 15px;  /* Left margin */
+    margin-right: 15px; /* Right margin */
+}
+.custom-user-feedback-large-interactive-card-wrapper-styled-dimension {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    padding: 20px;
+    background-color:whitesmoke;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    /* color: white !important; */
+    height:100%; /* Increased height */
+}
+
+.custom-user-feedback-large-interactive-card-wrapper-styled-dimension:hover {
+    transform: translateY(-5px);
+}
+
+.custom-user-feedback-content-layout-with-extra-space {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%; /* Fill height */
+}
+
+
+
   /* Blog section */
   /* ------------------------------------ */
   .blog-cardblock {
@@ -777,7 +778,7 @@
         }
 
 /*------------------------------------------------------ */
-/* BLood donation page  */
+/* BLOOD-DONATION-PAGE  */
 
 /* Notification section */
 
@@ -857,7 +858,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-    width: 100%;
+    width: 100%;    
+    height: 100%;
   }
   
   .event-card:hover {
@@ -1186,6 +1188,47 @@
 }
 
 
+.custom-feedback-card {
+    padding-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 50px;
+    margin: 0 auto;
+    height: 100% !important;
+    background-color: #f8f9fa;
+    transition: box-shadow 0.3s ease;
+    width: 90%; /* Make card width responsive */
+    max-width: 600px; /* Maximum width for larger screens */
+}
+
+.custom-feedback-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.custom-user-feedback-date-display-adjust {
+    font-size: 0.8em;
+    color: #6c757d; /* Gray color for date */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .custom-feedback-card {
+        padding: 45px;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-feedback-card {
+        padding: 20px;
+        padding-top: 30px;
+        padding-left: 20px;
+        width: 100%;
+        height:100%;
+        margin: 0% !important;
+    }
+}
 
 /* Section Styles */
 .gift-section {
