@@ -69,8 +69,17 @@ Welcome to the Blood Bank Project! This application serves as a platform for con
 - **Subscriptions:**  
   `GET https://blood-bank-deploy-vercel.app/blood_bank_releted/subscriptions/`
 
-## Installation
+## Requirements
+- Python 3.12.3
+- Django 5.1
+- PostgreSQL
+- HTML5
+- CSS3
+- Bootstrap5
+- JavaScript 
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/blood-bank-project.git
+## Startup Instructions
+Follow the steps below to start the project:
+1. Clone the repository: `git clone <repository-url>`
+3. Start the server: `open with live server`
+
