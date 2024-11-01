@@ -123,7 +123,96 @@
     text-transform: uppercase;
 }
 /* ------------------------------------------------ */
-/* payment-page */
+/* donation-page */
+/* Container Styling */
+.donation-amount-form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label Styling */
+.donation-amount-form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333333;
+    display: block;
+}
+
+/* Input Field Styling */
+.donation-amount-form-input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.donation-amount-form-input-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Button Styling */
+.donation-amount-form-button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.donation-amount-form-close-button,
+.donation-amount-form-submit-button {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.donation-amount-form-close-button {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+.donation-amount-form-close-button:hover {
+    background-color: #cccccc;
+}
+
+.donation-amount-form-submit-button {
+    background-color: #007bff;
+    color: #ffffff;
+    width: 25%;
+    padding: 10px;
+    text-transform: uppercase;
+
+}
+
+.donation-amount-form-submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .donation-amount-form-container {
+        padding: 20px;
+    }
+    
+    .donation-amount-form-submit-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+
 .payment-transaction-section {
     margin: 20px;
 }
