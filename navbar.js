@@ -23,6 +23,7 @@ fetch("navbar.html")
             </a>
            
         </li>
+       
         <li class="nav-item">
             <a class="btn btn-donate" id="donationEventModalBtn" href="#">Donate Now</a> <!-- Changed Button ID -->
         </li>

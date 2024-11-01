@@ -122,7 +122,23 @@
     font-weight: 600;
     text-transform: uppercase;
 }
-
+/* ------------------------------------------------ */
+/* payment-page */
+.payment-transaction-section {
+    margin: 20px;
+}
+.table-responsive {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* ---------------------------------------------- */
 /* Line under headings */
 .custom-footer h5::after {
     content: '';

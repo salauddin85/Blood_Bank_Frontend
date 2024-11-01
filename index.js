@@ -213,6 +213,7 @@ function displayFeedback() {
   feedbackSection.innerHTML = ''; // Clear existing feedback
 
   feedbackData.forEach(feedback => {
+      console.log(feedback)
       const createdAt = new Date(feedback.created_at);
       const formattedDate = createdAt.toLocaleDateString(); // Format date
       const formattedTime = createdAt.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); // Format time
