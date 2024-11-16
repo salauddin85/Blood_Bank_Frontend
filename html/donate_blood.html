@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Bank</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body class="page-body">
+    <!-- Navbar -->
+    <header>
+      <div id="navbar"></div>
+    </header>
+
+    <section style="background-color: #f8f9fa">
+      <div class="container">
+        <div class="btn-container">
+          <button
+            class="btn btn-custom text-uppercase"
+            id="notificationBloodBtn"
+            onclick="scrollToSection('notification')"
+          >
+            Notification For Blood
+          </button>
+          <button class="btn btn-custom text-uppercase"  onclick="scrollToSection('notification-events-section')">Notification based events</button>
+          <button class="btn btn-custom text-uppercase" id="eventCreateModalBtn">
+            Create Events
+          </button>
+
+          <a class="btn btn-custom align-items-center pt-3 text-uppercase" href="./all_event.html">All Donor Events</a>
+
+          <a class="btn btn-custom align-items-center pt-2 text-uppercase" href="./profile.html">Your Donation History </a>
+
+          <!-- <a class="btn btn-custom align-items-center pt-3" href="./dashboard.html">Dashboard </a> -->
+          <button class="btn btn-custom text-uppercase" onclick="scrollToSection('history-section')">Donation History</button>
+          <button class="btn btn-custom text-uppercase" id="feedbackCreateModalbtn">Feedback</button>
+        </div>
+      </div>
+
+      <!-- Blood Notification Modal -->
+      <div
+        class="modal fade"
+        id="bloodNotificationModal"
+        tabindex="-1"
+        aria-labelledby="bloodNotificationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 style="letter-spacing: 1px;" class="modal-title text-black text-uppercase text-center" id="bloodNotificationModalLabel" >
+                Blood Donation Notification
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body fw-bold">
+              <p>
+                Please provide your urgent blood group and location to receive
+                blood.
+              </p>
+              <form id="notificationForm" onsubmit="notificationForm(event)">
+                <div class="mb-3">
+                  <label for="bloodGroup" class="form-label"
+                    >Choose Blood Group*</label
+                  >
+                  <select
+                    class="form-select rounded-0 border-1 border-danger"
+                    id="bloodGroup"
+                    name="bloodGroup"
+                    required
+                  >
+                    <option value="">Blood group</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location*</label>
+                  <input
+                    type="text"
+                    class="form-control rounded-0 border-1 border-danger"
+                    id="location"
+                    name="location"
+                    placeholder="Enter your location"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message*</label>
+                  <textarea
+                    name="message"
+                    class="form-control rounded-0 border-1 border-danger"
+                    id="message"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger rounded-0 px-3 ">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Events Modal -->
+      <div
+        class="modal fade"
+        id="eventCreateModal"
+        tabindex="-1"
+        aria-labelledby="eventCreateModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 style="letter-spacing: 1px;" class="modal-title text-black text-uppercase text-center" id="eventCreateModalLabel">
+                Create New Event
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Form for event creation -->
+              <form id="createEventForm" class="text-black" onsubmit="EventForm(event)">
+                <!-- Event Name -->
+                <div class="mb-3">
+                  <label for="eventName" class="form-label">Event Name*</label>
+                  <input
+                    type="text"
+                    class="form-control rounded-0 border-1 border-danger"
+                    id="eventName"
+                    name="eventName"
+                    required
+                    placeholder="Enter Event Name"
+                  />
+                </div>
+                <!-- recipent -->
+                <div class="mb-3">
+                  <label for="eventRecipient" class="form-label"
+                    >Recipent*</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control rounded-0 border-1 border-danger"
+                    id="eventRecipient"
+                    name="eventRecipient"
+                    required
+                    placeholder="Who to donate blood?"
+                  />
+                </div>
+                <!-- Blood Group -->
+                <div class="mb-3">
+                  <label for="bloodGroup" class="form-label"
+                    >Choose Blood Group*</label
+                  >
+                  <select
+                    class="form-select rounded-0 border-1 border-danger"
+                    id="bloodGroup"
+                    name="bloodGroup"
+                    required
+                  >
+                    <option value="">Blood group</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+
+                <!-- Event Date -->
+                <div class="mb-3">
+                  <label for="eventDate" class="form-label">Event Date*</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control rounded-0 border-1 border-danger"
+                    id="eventDate"
+                    name="eventDate"
+                    required
+                  />
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-danger rounded-0 fw-bold py-2">
+                  Create Event
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Feedback Modal -->
+<div
+  class="modal fade"
+  id="feedbackModal"
+  tabindex="-1"
+  aria-labelledby="feedbackModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="letter-spacing: 1px;" class="modal-title text-black text-uppercase text-center" id="feedbackModalLabel">
+          Submit Your Feedback
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)">
+          <!-- Rating Selection -->
+          <div class="mb-3 text-black fw-bold">
+            <label for="rating" class="form-label">Rate Us*</label>
+            <select class="form-select rounded-0 border-1 border-danger" id="rating" name="rating" required>
+              <option value="">Select a rating</option> <!-- Placeholder option -->
+              <option value="⭐">⭐</option>
+              <option value="⭐⭐">⭐⭐</option>
+              <option value="⭐⭐⭐">⭐⭐⭐</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+            </select>
+          </div>
+          <!-- Feedback Text Field -->
+          <div class="mb-3 text-black fw-bold">
+            <label for="feedbackText" class="form-label">Your Feedback*</label>
+            <textarea
+              class="form-control rounded-0 border-1 border-danger"
+              id="feedbackText"
+              name="feedbackText"
+              rows="4"
+              placeholder="Write your feedback here..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger rounded-0">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Donation Section -->
+    </section>
+    <section id="notification-section" class="p-4" style="background-color:rgba(255, 99, 71, 0.847);">
+      <h2 class="section-title navbar-brand fs-3 text-white text-center pb-3">Donation Events</h2>
+
+      <div id="notification">
+
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <h6 class="fw-bold text-uppercase"><a class="text-decoration-none px-5 py-3 rounded-0 btn btn-outline-danger border-white  text-white  fw-bold newsletter-button" href="./all_notification.html">View All</a></h6>
+    </div>
+    
+    </section>
+    
+    <section id="events-section" class="" style="background-color:rgba(255, 0, 0, 0.564);">
+      <div class="">
+        <div class="col-12 text-center mb-4">
+          <h2 class="blood-request-section-title fs-3 text-white">Donar Blood Requests</h2>
+          <h6 class="section-subtitle text-white fw-bold">Explore the latest blood donation events</h6>
+        </div>
+      </div>
+     
+      
+      <div class="row" id="events-list">
+        <!-- Event cards will be injected here dynamically via JavaScript -->
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <h6 class="fw-bold text-uppercase"><a class="text-decoration-none px-5 py-3 rounded-0 btn btn-outline-danger border-white  text-white  fw-bold newsletter-button" href="./all_event.html">View All</a></h6>
+    </div>
+      
+    </section>
+
+    <section id="history-section" style="background-color:rgba(255, 99, 71, 0.727);">
+
+      <div class="container">
+        <h1 class=" text-center align-items-center pt-4 navbar-brand fs-2 text-white">Donation History</h1>
+        <div class="row pt-3" id="donation-history-container"></div> <!-- Container for the donation history cards -->
+    </div>
+    <div class="d-flex justify-content-center mt-3 pb-4">
+      <h6 class="fw-bold text-uppercase"><a class="text-decoration-none px-5 py-3 rounded-0 btn btn-outline-danger border-white  text-white  fw-bold newsletter-button" href="./all_donation_history.html">View All</a></h6>
+  </div>
+    </section>
+    
+    <section id="notification-events-section" style="background-color: rgba(255, 0, 0, 0.7);">
+      <div class="container-fluid ">
+        <div class="col-12 text-center mb-4">
+          <h2 class="blood-request-section-title fs-3 text-white pt-5">Hidden Notification User Requests</h2>
+          <h6 class="section-subtitle text-white fw-bold">Blood requests from other users are shown, except for those created by the user with the notification.</h6>
+        </div>
+    
+        <div class="row" id="events-list-request">
+          <!-- Event cards will be injected here dynamically via JavaScript -->
+        
+         
+        </div>
+        
+        
+    
+        <div class="d-flex justify-content-center mt-2 pb-3">
+          <h6 class="fw-bold text-uppercase">
+            <a class="text-decoration-none px-5 py-3 rounded-0 btn btn-outline-danger border-white text-white fw-bold newsletter-button" href="./all_notification.html">View All</a>
+          </h6>
+        </div>
+      </div>
+    </section>
+    
+    
+
+   
+   
+  
+    
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Font Awesome CDN for Icons -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+
+
+    <script src="./donate_blood.js"></script>
+   
+
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/donate_blood.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
